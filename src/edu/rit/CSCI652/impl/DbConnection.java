@@ -12,24 +12,24 @@ import java.util.ArrayList;
  * @author Thomas Binu
  * @author Amol Gaikwad
  */
-public class SQLiteJDBCDriverConnection {
+public class DbConnection {
 
     static String databasePath;
 
-    private static final SQLiteJDBCDriverConnection INSTANCE = new SQLiteJDBCDriverConnection();
+    private static final DbConnection INSTANCE = new DbConnection();
 
 
-    public static SQLiteJDBCDriverConnection getInstance() {
+    public static DbConnection getInstance() {
 
-        createDatabase();
-        createTables();
         return INSTANCE;
     }
 
-    public SQLiteJDBCDriverConnection(){
+    public DbConnection(){
 
         String databaseDir = new File("jdbc:sqlite:"  + System.getProperty("user.dir"), "database").toString();
         databasePath = new File(databaseDir, "pubsub.db").toString();
+        createDatabase();
+        createTables();
 
     }
 
@@ -80,7 +80,7 @@ public class SQLiteJDBCDriverConnection {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
                 int publishDateTime = rs.getInt("publishdatetime");
-                eventList.add(new Event(id, topicId, title, content,publishDateTime));
+                eventList.add(new Event(topicId, title, content,(long)publishDateTime));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -131,7 +131,7 @@ public class SQLiteJDBCDriverConnection {
                 String title = rs2.getString("title");
                 String content = rs2.getString("content");
                 int publishDateTime = rs2.getInt("publishdatetime");
-                eventList.add(new Event(id, topicId, title, content,publishDateTime));
+                eventList.add(new Event(topicId, title, content,(long)publishDateTime));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -356,7 +356,7 @@ public class SQLiteJDBCDriverConnection {
      */
     public static void main(String[] args) {
 
-            SQLiteJDBCDriverConnection conn = SQLiteJDBCDriverConnection.getInstance();
+            DbConnection conn = DbConnection.getInstance();
 
             conn.insertTopic("a", "c");
             conn.insertTopic("b", "d");

@@ -1,5 +1,8 @@
 package edu.rit.CSCI652.impl;
 
+import com.google.gson.Gson;
+import edu.rit.CSCI652.demo.Message;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -7,8 +10,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.List;
 
-public class UDPSystem
-{
+public class UDPSystem {
 //    static UDPSystem instance;
 
     private DatagramSocket socket;
@@ -16,132 +18,105 @@ public class UDPSystem
     private String eventManagerIP;
     private boolean receiving;
     ServerI agent;
-//    MulticastSender server;
-//    String multicastAddress;
-//    ControllerI controller;
 
-    public UDPSystem()
-    {
-        try
-        {
+
+    public UDPSystem() {
+        try {
             socket = new DatagramSocket(6789);
-        }
-        catch (SocketException e)
-        {
+        } catch (SocketException e) {
             e.printStackTrace();
         }
         System.out.println("Connected.");
         receiving = false;
     }
 
-    public UDPSystem(int port)
-    {
-        try
-        {
+    public UDPSystem(int port) {
+        try {
             socket = new DatagramSocket(port);
-        }
-        catch (SocketException e)
-        {
+        } catch (SocketException e) {
             e.printStackTrace();
         }
         System.out.println("Connected.");
         receiving = false;
     }
 
-//    public static UDPSystem getInstance() throws IOException
-//    {
-//        if(instance == null)
-//        {
-//            instance = new UDPSystem();
-//        }
-//        return instance;
-//    }
 
-    public void sendEcho(String msg, String iPAddress) throws IOException
-    {
-        byte[] buf = msg.getBytes();
+    public void sendMessage(Message message, String iPAddress) throws IOException {
+
+        Gson gson = new Gson();
+        String messageStr = gson.toJson(message);
+        byte[] buf = messageStr.getBytes();
         InetAddress address = InetAddress.getByName(iPAddress);
+
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 6789);
         socket.send(packet);
     }
-    public void sendEcho(String msg, List<String> iPAddresses) throws IOException
-    {
+
+    public void sendMessage(Message message, List<String> iPAddresses) throws IOException {
         byte[] buf;
-        for(String address: iPAddresses)
-        {
-            sendEcho(msg, address);
-//            InetAddress inetAddress = InetAddress.getByName(address);
-//            buf = msg.getBytes();
-//            DatagramPacket packet = new DatagramPacket(buf, buf.length, inetAddress, 6789);
-//            socket.send(packet);
+        for (String address : iPAddresses) {
+            sendMessage(message, address);
         }
     }
 
     //For localhost
-    public void sendEchoLocal(String msg, int port) throws IOException
-    {
-        byte[] buf = msg.getBytes();
+    public void sendMessageLocal(Message message, int port) throws IOException {
+
+
         InetAddress address = InetAddress.getByName("localhost");
+        System.out.println("test:" + socket.getLocalPort());
+
+
+        Gson gson = new Gson();
+        String messageStr = gson.toJson(message);
+        byte[] buf = messageStr.getBytes();
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
         socket.send(packet);
     }
 
-    public void sendEchoLocal(String msg, List<Integer> ports) throws IOException
-    {
+    public void sendMessageLocal(Message message, List<Integer> ports) throws IOException {
         byte[] buf;
-        for(int port: ports)
-        {
-           sendEchoLocal(msg, port);
+        for (int port : ports) {
+            sendMessageLocal(message, port);
         }
     }
 
-    public void close()
-    {
+    public void close() {
         socket.close();
     }
 
-    public void getMessages(ServerI serverI)
-    {
-        if (!receiving)
-        {
+    public void getMessages(ServerI serverI) {
+        if (!receiving) {
             receiving = true;
-            Thread thread = new Thread()
-            {
+            Thread thread = new Thread() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     running = true;
-                    while (running)
-                    {
-                        byte[] buf = new byte[256];
-                        DatagramPacket packet = new DatagramPacket(buf, buf.length);
-                        try
-                        {
-                            socket.receive(packet);
-                        } catch (IOException e)
-                        {
+                    while (running) {
+                        byte[] buf = new byte[1024];
+                        DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);
+                        try {
+                            socket.receive(receivePacket);
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
 
-                        InetAddress address = packet.getAddress();
-                        int port = packet.getPort();
-                        packet = new DatagramPacket(buf, buf.length, address, port);
-                        String received = new String(packet.getData(), 0, packet.getLength());
+                        InetAddress address = receivePacket.getAddress();
+                        int port = receivePacket.getPort();
 
-                        new Thread()
-                        {
+                        String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
+                        System.out.println(messageStr);
+
+                        new Thread() {
                             @Override
-                            public void run()
-                            {
-                                serverI.success(received);
+                            public void run() {
+
+                                Gson gson = new Gson();
+                                Message message = gson.fromJson(messageStr, Message.class);
+                                serverI.success(message, port);
                             }
                         }.start();
 
-                        if (received.equals("end"))
-                        {
-                            running = false;
-                            continue;
-                        }
                     }
                     socket.close();
                 }
@@ -150,33 +125,4 @@ public class UDPSystem
         }
     }
 
-    public DatagramSocket getSocket()
-    {
-        return socket;
-    }
-
-    public void setSocket(DatagramSocket socket)
-    {
-        this.socket = socket;
-    }
-
-    public boolean isRunning()
-    {
-        return running;
-    }
-
-    public void setRunning(boolean running)
-    {
-        this.running = running;
-    }
-
-    public String getEventManagerIP()
-    {
-        return eventManagerIP;
-    }
-
-    public void setEventManagerIP(String eventManagerIP)
-    {
-        this.eventManagerIP = eventManagerIP;
-    }
 }

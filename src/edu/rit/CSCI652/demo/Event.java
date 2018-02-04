@@ -4,19 +4,35 @@ import java.util.List;
 
 public class Event {
 
-    public Event(int id, int topicId, String title, String content, int publishDateTime) {
-        this.id = id;
+    public Event(int topicId, String title, String content, long publishDateTime) {
+
         this.topicId = topicId;
         this.title = title;
         this.content = content;
         this.publishDateTime = publishDateTime;
     }
 
-    private int id;
+
     private int topicId;
     private String title;
     private String content;
-    private int publishDateTime;
+    private long publishDateTime;
+
+    public int getTopicId() {
+        return topicId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public long getPublishDateTime() {
+        return publishDateTime;
+    }
 
     @Override
     public String toString() {

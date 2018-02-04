@@ -21,4 +21,24 @@ public class Topic {
 	public String toString() {
 		return keywords + "," + name;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }
