@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sqlitetutorial.net
+ * @author Thomas Binu
+ * @author Amol Gaikwad
  */
 public class SQLiteJDBCDriverConnection {
 
