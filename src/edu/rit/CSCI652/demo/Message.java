@@ -1,7 +1,6 @@
 package edu.rit.CSCI652.demo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ruzan on 2/1/2018.
@@ -13,9 +12,12 @@ public class Message
     private ArrayList<Event> eventList;
     private Subscriber subscriber;
     private Event event;
+    private Topic topic;
 
-    public static final int REQUEST_TOPICS = 1;
-    public static final int SEND_EVENT = 2;
+    public static final int PUBLISH_REQUEST_TOPICS = 1;
+    public static final int PUBLISH_SEND_EVENT = 2;
+    public static final int SUBSCRIBE_REQUEST_TOPICS = 3;
+    public static final int SUBSCRIBE_SELECTED_TOPIC = 4;
 
 
 
@@ -79,7 +81,11 @@ public class Message
         this.event = event;
     }
 
-    public static int getRequestTopics() {
-        return REQUEST_TOPICS;
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }

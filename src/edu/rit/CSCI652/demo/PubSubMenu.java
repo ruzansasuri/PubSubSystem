@@ -28,7 +28,7 @@ public class PubSubMenu {
 
     public interface topicInterface {
 
-        void insertEvent (Topic topic, String title, String message);
+        void selectedTopic(Topic topic, String title, String message);
     }
 
     public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface){
@@ -48,7 +48,7 @@ public class PubSubMenu {
         System.out.print("Enter your message:");
         String msg = in.next();
 
-        topicInterface.insertEvent(topicArrayList.get(choice-1),title, msg);
+        topicInterface.selectedTopic(topicArrayList.get(choice-1),title, msg);
     }
 
     public void showMenu(PubSubMenuInterface pubSubMenuInterface) {

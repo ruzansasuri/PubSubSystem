@@ -14,7 +14,7 @@ public class PubSubAgent implements PublisherI, SubscriberI
 	public static void main(String[] args){
 
 
-		int port = 9999;
+		int port = 9999; //DEFAULT PORT
 		if(args.length == 1){
 			port = Integer.parseInt(args[0]);
 		}
@@ -23,49 +23,60 @@ public class PubSubAgent implements PublisherI, SubscriberI
 		udpSystem.getMessages(new ServerI() {
 
 			@Override
-			public void success(Message message, int port) {
+			public void success(Message message, String ip, int port) {
 
 				System.out.println("Server port:" + port + ", Message Type:" + message.getType());
 
 				switch (message.getType()){
 
-					case Message.REQUEST_TOPICS:
+					case Message.PUBLISH_REQUEST_TOPICS:
 
 						ArrayList<Topic> topicArrayList = message.getTopicList();
 
-						PubSubMenu pubSubMenu = new PubSubMenu();
-						pubSubMenu.showTopics(topicArrayList, new PubSubMenu.topicInterface() {
+						new PubSubMenu().showTopics(topicArrayList, new PubSubMenu.topicInterface() {
 							@Override
-							public void insertEvent(Topic topic, String title, String content) {
+							public void selectedTopic(Topic topic, String title, String content) {
 
 								Event event = new Event(topic.getId(), title, content, System.currentTimeMillis());
 								Message sendMessage = new Message();
-								sendMessage.setType(Message.SEND_EVENT);
+								sendMessage.setType(Message.PUBLISH_SEND_EVENT);
 								sendMessage.setEvent(event);
 								try {
+
+									//TODO
 									udpSystem.sendMessageLocal(sendMessage, port);
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-
-
-//								DbConnection conn = DbConnection.getInstance();
-//								long timeNow = System.currentTimeMillis()/1000L;
-//								conn.insertEvent(topic.getId(),title, message, (int)timeNow);
 							}
 						});
 
 						break;
-					case 2:
+					case Message.SUBSCRIBE_REQUEST_TOPICS:
+
+
+						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+							@Override
+							public void selectedTopic(Topic topic, String title, String content) {
+
+								Message sendMessage = new Message();
+								sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
+								sendMessage.setTopic(topic);
+								try {
+
+									//TODO
+									udpSystem.sendMessageLocal(sendMessage, port);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						});
+
+
 						break;
-					case 3:
+					case 4:
 						break;
 				}
-
-			}
-
-			@Override
-			public void success(Message message, String ip) {
 
 			}
 		});
@@ -77,11 +88,13 @@ public class PubSubAgent implements PublisherI, SubscriberI
 			public void invokePublish() {
 
 				Message message = new Message();
-				message.setType(Message.REQUEST_TOPICS);
+				message.setType(Message.PUBLISH_REQUEST_TOPICS);
 
 				try {
+
+					//TODO
 					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
-					//udpSystem.sendMessage(message, SERVER_IP);
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -95,6 +108,17 @@ public class PubSubAgent implements PublisherI, SubscriberI
 			@Override
 			public void invokeSubscribe() {
 
+				Message message = new Message();
+				message.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
+
+				try {
+
+					//TODO
+					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 
 			@Override
@@ -104,6 +128,8 @@ public class PubSubAgent implements PublisherI, SubscriberI
 
 			@Override
 			public void invokeUnsubscribe() {
+
+
 
 			}
 		});

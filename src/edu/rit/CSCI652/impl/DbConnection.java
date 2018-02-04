@@ -48,10 +48,12 @@ public class DbConnection {
         }
     }
 
-    public void insertEvent(int topicId, String title, String content, int publishDateTime){
+    public void insertEvent(int topicId, String title, String content, long publishDateTime){
 
+
+        int time = (int)(publishDateTime / 1000L);
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
-                "VALUES('" + topicId + "', '" + title + "', '" + content + "', '" + publishDateTime + "');";
+                "VALUES('" + topicId + "', '" + title + "', '" + content + "', '" + time + "');";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -255,7 +257,7 @@ public class DbConnection {
         return subId;
     }
 
-    public void insertSubscriber(String ipaddress, int lastactivedatetime){
+    public void insertSubscriber(String ipaddress, long lastactivedatetime){
 
         String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime)\n" +
                 "VALUES('"+ ipaddress + "', '" + lastactivedatetime + "');";
