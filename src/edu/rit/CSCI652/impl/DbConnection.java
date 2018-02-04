@@ -12,21 +12,21 @@ import java.util.ArrayList;
  * @author Thomas Binu
  * @author Amol Gaikwad
  */
-public class SQLiteJDBCDriverConnection {
+public class DbConnection {
 
     static String databasePath;
 
-    private static final SQLiteJDBCDriverConnection INSTANCE = new SQLiteJDBCDriverConnection();
+    private static final DbConnection INSTANCE = new DbConnection();
 
 
-    public static SQLiteJDBCDriverConnection getInstance() {
+    public static DbConnection getInstance() {
 
         createDatabase();
         createTables();
         return INSTANCE;
     }
 
-    public SQLiteJDBCDriverConnection(){
+    public DbConnection(){
 
         String databaseDir = new File("jdbc:sqlite:"  + System.getProperty("user.dir"), "database").toString();
         databasePath = new File(databaseDir, "pubsub.db").toString();
@@ -356,7 +356,7 @@ public class SQLiteJDBCDriverConnection {
      */
     public static void main(String[] args) {
 
-            SQLiteJDBCDriverConnection conn = SQLiteJDBCDriverConnection.getInstance();
+            DbConnection conn = DbConnection.getInstance();
 
             conn.insertTopic("a", "c");
             conn.insertTopic("b", "d");

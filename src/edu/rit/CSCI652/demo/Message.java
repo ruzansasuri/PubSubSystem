@@ -1,18 +1,27 @@
 package edu.rit.CSCI652.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Ruzan on 2/1/2018.
  */
-public class Request
+public class Message
 {
     private int type;
-    private List<Topic> topicList;
-    private List<Event> eventList;
+    private ArrayList<Topic> topicList;
+    private ArrayList<Event> eventList;
     private Subscriber subscriber;
 
-    public Request(int type, List<Topic> topicList, List<Event> eventList, Subscriber subscriber)
+    public static final int REQUEST_TOPICS = 1;
+
+
+
+    public Message(){
+
+    }
+
+    public Message(int type, ArrayList<Topic> topicList, ArrayList<Event> eventList, Subscriber subscriber)
     {
         this.type = type;
         this.topicList = topicList;
@@ -30,22 +39,22 @@ public class Request
         this.type = type;
     }
 
-    public List<Topic> getTopicList()
+    public ArrayList<Topic> getTopicList()
     {
         return topicList;
     }
 
-    public void setTopicList(List<Topic> topicList)
+    public void setTopicList(ArrayList<Topic> topicList)
     {
         this.topicList = topicList;
     }
 
-    public List<Event> getEventList()
+    public ArrayList<Event> getEventList()
     {
         return eventList;
     }
 
-    public void setEventList(List<Event> eventList)
+    public void setEventList(ArrayList<Event> eventList)
     {
         this.eventList = eventList;
     }
@@ -59,4 +68,5 @@ public class Request
     {
         this.subscriber = subscriber;
     }
+
 }

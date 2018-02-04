@@ -1,5 +1,6 @@
 package edu.rit.CSCI652.demo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -22,6 +23,16 @@ public class PubSubMenu {
 
 
         void invokeUnsubscribe();
+
+    }
+
+    public interface TopicsInterface{
+
+        void selectedTopic(Topic topic);
+    }
+
+    public void showTopics(ArrayList<Topic> topicArrayList, TopicsInterface topicsInterface){
+
 
     }
 

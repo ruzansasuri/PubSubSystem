@@ -1,6 +1,10 @@
 package edu.rit.CSCI652.impl;
 
+import edu.rit.CSCI652.demo.Message;
+
 public interface ServerI
 {
-    void success(String message);
+    void success(Message message, int port);
+
+    void success(Message message, String ip);
 }
