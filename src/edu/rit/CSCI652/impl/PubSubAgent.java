@@ -1,16 +1,9 @@
 package edu.rit.CSCI652.impl;
-
 import com.google.gson.Gson;
-import edu.rit.CSCI652.demo.Event;
-import edu.rit.CSCI652.demo.Request;
-import edu.rit.CSCI652.demo.Subscriber;
-import edu.rit.CSCI652.demo.Topic;
-
+import edu.rit.CSCI652.demo.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class PubSubAgent implements PublisherI, SubscriberI, ServerI
 {
@@ -20,11 +13,43 @@ public class PubSubAgent implements PublisherI, SubscriberI, ServerI
 
 	public PubSubAgent(String eventManagerIP) throws IOException
 	{
-//		eventManagerIP  = "localhost";
-//		subscriberController = new SubscriberController(eventManagerIP);
+
 		this.eventManagerIP = eventManagerIP;
 		UDPSystem udpSystem = new UDPSystem();
 		udpSystem.getMessages(this);
+	}
+
+	public static void main(String[] args){
+
+
+		PubSubMenu pubSubMenu = new PubSubMenu();
+		pubSubMenu.showMenu(new PubSubMenu.PubSubMenuInterface() {
+
+			@Override
+			public void invokePublish() {
+
+			}
+
+			@Override
+			public void invokeAdvertise() {
+
+			}
+
+			@Override
+			public void invokeSubscribe() {
+
+			}
+
+			@Override
+			public void invokeRead() {
+
+			}
+
+			@Override
+			public void invokeUnsubscribe() {
+
+			}
+		});
 	}
 
 	@Override
