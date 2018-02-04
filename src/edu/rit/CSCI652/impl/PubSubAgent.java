@@ -31,9 +31,8 @@ public class PubSubAgent implements PublisherI, SubscriberI
 
 					case Message.PUBLISH_REQUEST_TOPICS:
 
-						ArrayList<Topic> topicArrayList = message.getTopicList();
 
-						new PubSubMenu().showTopics(topicArrayList, new PubSubMenu.topicInterface() {
+						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
 							@Override
 							public void selectedTopic(Topic topic, String title, String content) {
 
@@ -52,6 +51,7 @@ public class PubSubAgent implements PublisherI, SubscriberI
 						});
 
 						break;
+
 					case Message.SUBSCRIBE_REQUEST_TOPICS:
 
 
@@ -74,7 +74,62 @@ public class PubSubAgent implements PublisherI, SubscriberI
 
 
 						break;
-					case 4:
+
+					case Message.UNSUB_REQUEST_TOPICS:
+
+
+						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+							@Override
+							public void selectedTopic(Topic topic, String title, String content) {
+
+								Message sendMessage = new Message();
+								sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
+								sendMessage.setTopic(topic);
+								try {
+
+									//TODO
+									udpSystem.sendMessageLocal(sendMessage, port);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						});
+
+
+						break;
+
+
+					case Message.READ_REQUEST_EVENTS:
+
+						ArrayList<Event> eventList = message.getEventList();
+						for(Event event:eventList){
+							System.out.println(event.getTitle());
+							System.out.println(event.getContent());
+							System.out.println();
+						}
+
+						break;
+
+					case Message.ADVERTISE_REQUEST_TOPICS:
+
+						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+							@Override
+							public void selectedTopic(Topic topic, String title, String content) {
+
+								Event event = new Event(topic.getId(), title, content, System.currentTimeMillis());
+								Message sendMessage = new Message();
+								sendMessage.setType(Message.PUBLISH_SEND_EVENT);
+								sendMessage.setEvent(event);
+								try {
+
+									//TODO
+									udpSystem.sendMessageLocal(sendMessage, port);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						});
+
 						break;
 				}
 
@@ -103,6 +158,18 @@ public class PubSubAgent implements PublisherI, SubscriberI
 			@Override
 			public void invokeAdvertise() {
 
+				Message message = new Message();
+				message.setType(Message.ADVERTISE_REQUEST_TOPICS);
+
+				try {
+
+					//TODO
+					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
 
 			@Override
@@ -124,11 +191,34 @@ public class PubSubAgent implements PublisherI, SubscriberI
 			@Override
 			public void invokeRead() {
 
+				Message message = new Message();
+				message.setType(Message.READ_REQUEST_EVENTS);
+
+				try {
+
+					//TODO
+					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
 
 			@Override
 			public void invokeUnsubscribe() {
 
+				Message message = new Message();
+				message.setType(Message.UNSUB_REQUEST_TOPICS);
+
+				try {
+
+					//TODO
+					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
 
 			}

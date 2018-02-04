@@ -18,6 +18,11 @@ public class Message
     public static final int PUBLISH_SEND_EVENT = 2;
     public static final int SUBSCRIBE_REQUEST_TOPICS = 3;
     public static final int SUBSCRIBE_SELECTED_TOPIC = 4;
+    public static final int READ_REQUEST_EVENTS = 5;
+    public static final int ADVERTISE_REQUEST_TOPICS = 6;
+    public static final int UNSUB_REQUEST_TOPICS = 7;
+    public static final int UNSUBE_SELECT_TOPIC = 8;
+
 
 
 

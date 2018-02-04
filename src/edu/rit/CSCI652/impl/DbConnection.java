@@ -1,5 +1,5 @@
 package edu.rit.CSCI652.impl;
- 
+
 import edu.rit.CSCI652.demo.Event;
 import edu.rit.CSCI652.demo.Topic;
 
@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- *
  * @author Thomas Binu
  * @author Amol Gaikwad
  */
@@ -24,9 +23,9 @@ public class DbConnection {
         return INSTANCE;
     }
 
-    public DbConnection(){
+    public DbConnection() {
 
-        String databaseDir = new File("jdbc:sqlite:"  + System.getProperty("user.dir"), "database").toString();
+        String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
         databasePath = new File(databaseDir, "pubsub.db").toString();
         createDatabase();
         createTables();
@@ -48,10 +47,10 @@ public class DbConnection {
         }
     }
 
-    public void insertEvent(int topicId, String title, String content, long publishDateTime){
+    public void insertEvent(int topicId, String title, String content, long publishDateTime) {
 
 
-        int time = (int)(publishDateTime / 1000L);
+        int time = (int) (publishDateTime / 1000L);
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
                 "VALUES('" + topicId + "', '" + title + "', '" + content + "', '" + time + "');";
 
@@ -65,14 +64,14 @@ public class DbConnection {
         }
     }
 
-    public ArrayList<Event> getAllEvents(){
+    public ArrayList<Event> getAllEvents() {
 
         String sql = "SELECT *  FROM event";
-        ArrayList<Event> eventList= new ArrayList<>();
+        ArrayList<Event> eventList = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             // loop through the result set
             while (rs.next()) {
@@ -82,7 +81,7 @@ public class DbConnection {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
                 int publishDateTime = rs.getInt("publishdatetime");
-                eventList.add(new Event(topicId, title, content,(long)publishDateTime));
+                eventList.add(new Event(topicId, title, content, (long) publishDateTime));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -91,40 +90,45 @@ public class DbConnection {
         return eventList;
     }
 
-    public ArrayList<Event> getAllEventsForSubscriber(int sub_id){
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+
         String sql = "SELECT lastactivedatetime FROM subscriber WHERE \n" +
-                "id = '"+ sub_id + "';";
-        ArrayList<Event> eventList= new ArrayList<>();
+                "ipaddress = '" + ipAddress + "';";
+
+        ArrayList<Event> eventList = new ArrayList<>();
         int sublastactive = 0;
+        int subId = 0;
 
         try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             // loop through the result set
-            while (rs.next()) {
-                sublastactive = rs.getInt("lastactivedatetime");
-            }
+            sublastactive = rs.getInt("lastactivedatetime");
+            subId = rs.getInt("lastactivedatetime");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         System.out.println(sublastactive);
 
-        ArrayList<Topic> subTopics = getSubscriberTopics(sub_id, true);
+        ArrayList<Topic> subTopics = getSubscriberTopics(subId, true);
 
         String topicIds = "";
-        for(Topic t: subTopics){
-            topicIds += t.getId()+ ",";
-            System.out.println(t.getId());
-        }
-        topicIds = topicIds.substring(0, topicIds.length()-1);
+
+
+//        for (Topic t : subTopics) {
+//            topicIds += t.getId() + ",";
+//            System.out.println(t.getId());
+//        }
+        topicIds = topicIds.substring(0, topicIds.length() - 1);
 
         sql = "SELECT * FROM event WHERE \n" +
-                "topic_id IN ("+ topicIds + ") AND publishdatetime >= '" + sublastactive + "';";
+                "topic_id IN (" + topicIds + ") AND publishdatetime >= '" + sublastactive + "';";
 
         try (Connection conn2 = DriverManager.getConnection(databasePath);
-             Statement stmt2  = conn2.createStatement();
-             ResultSet rs2    = stmt2.executeQuery(sql)){
+             Statement stmt2 = conn2.createStatement();
+             ResultSet rs2 = stmt2.executeQuery(sql)) {
 
             // loop through the result set
             while (rs2.next()) {
@@ -133,7 +137,7 @@ public class DbConnection {
                 String title = rs2.getString("title");
                 String content = rs2.getString("content");
                 int publishDateTime = rs2.getInt("publishdatetime");
-                eventList.add(new Event(topicId, title, content,(long)publishDateTime));
+                eventList.add(new Event(topicId, title, content, (long) publishDateTime));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -142,10 +146,10 @@ public class DbConnection {
         return eventList;
     }
 
-    public void insertTopic(String name, String keywords){
+    public void insertTopic(String name, String keywords) {
 
         String insertTopicSql = "INSERT INTO topic(name, keywords)\n" +
-                "VALUES('"+ name + "', '" + keywords + "');";
+                "VALUES('" + name + "', '" + keywords + "');";
 
 
         try (Connection conn = DriverManager.getConnection(databasePath);
@@ -158,67 +162,14 @@ public class DbConnection {
         }
     }
 
-    public ArrayList<Topic> getAllTopics(){
+    public ArrayList<Topic> getAllTopics() {
 
         String sql = "SELECT *  FROM topic";
-        ArrayList<Topic> topicList= new ArrayList<>();
+        ArrayList<Topic> topicList = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-
-            // loop through the result set
-            while (rs.next()) {
-
-                    int id = rs.getInt("id");
-                    String words = rs.getString("keywords");
-                    String name = rs.getString("name");
-                    Topic topic = new Topic(id, name, words);
-                    topicList.add(topic);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return topicList;
-    }
-
-    public int getTopicId(String name){
-
-        String sql = "SELECT id  FROM topic WHERE \n" +
-                "name = '"+ name + "';";
-        int topicId = 0;
-
-        try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-
-            // loop through the result set
-            while (rs.next()) {
-                topicId = rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return topicId;
-    }
-
-    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed){
-        String sql = "";
-        if(isSubscribed){
-            sql = "SELECT *  FROM topic WHERE id IN (SELECT topic_id FROM subscriber_topic WHERE \n" +
-                    "subscriber_id = '"+ sub_id + "');";
-        }else{
-            sql = "SELECT *  FROM topic WHERE id NOT IN (SELECT topic_id FROM subscriber_topic WHERE \n" +
-                    "subscriber_id = '"+ sub_id + "');";
-        }
-
-        ArrayList<Topic> topicList= new ArrayList<>();
-
-        try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             // loop through the result set
             while (rs.next()) {
@@ -236,20 +187,75 @@ public class DbConnection {
         return topicList;
     }
 
-    public int getSubscriberId(String ipaddress){
+    public int getTopicId(String name) {
 
-        String sql = "SELECT id  FROM subscriber WHERE \n" +
-                "ipaddress = '"+ ipaddress + "';";
-        int subId = 0;
+        String sql = "SELECT id  FROM topic WHERE \n" +
+                "name = '" + name + "';";
+        int topicId = 0;
 
         try (Connection conn = DriverManager.getConnection(databasePath);
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             // loop through the result set
             while (rs.next()) {
-                subId = rs.getInt("id");
+                topicId = rs.getInt("id");
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return topicId;
+    }
+
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+
+        String sql = "";
+        if (isSubscribed) {
+            sql = "SELECT *  FROM topic WHERE id IN (SELECT topic_id FROM subscriber_topic WHERE \n" +
+                    "subscriber_id = '" + sub_id + "');";
+        } else {
+            sql = "SELECT *  FROM topic WHERE id NOT IN (SELECT topic_id FROM subscriber_topic WHERE \n" +
+                    "subscriber_id = '" + sub_id + "');";
+        }
+
+        ArrayList<Topic> topicList = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                String words = rs.getString("keywords");
+                String name = rs.getString("name");
+                Topic topic = new Topic(id, name, words);
+                topicList.add(topic);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return topicList;
+    }
+
+    public int getSubscriberId(String ipaddress) {
+
+        String sql = "SELECT id  FROM subscriber WHERE \n" +
+                "ipaddress = '" + ipaddress + "';";
+        int subId = 0;
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // loop through the result set
+
+            subId = rs.getInt("id");
+
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -257,10 +263,10 @@ public class DbConnection {
         return subId;
     }
 
-    public void insertSubscriber(String ipaddress, long lastactivedatetime){
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
 
         String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime)\n" +
-                "VALUES('"+ ipaddress + "', '" + lastactivedatetime + "');";
+                "VALUES('" + ipaddress + "', '" + lastactivedatetime + "');";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -272,10 +278,10 @@ public class DbConnection {
         }
     }
 
-    public void insertSubscriberTopic(int sub_id, int top_id){
+    public void insertSubscriberTopic(int sub_id, int top_id) {
 
         String insertSubscriberTopicSql = "INSERT INTO subscriber_topic(subscriber_id, topic_id)\n" +
-                "VALUES('"+ sub_id + "', '" + top_id + "');";
+                "VALUES('" + sub_id + "', '" + top_id + "');";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -287,10 +293,10 @@ public class DbConnection {
         }
     }
 
-    public void removeSubscriberTopic(int sub_id, int top_id){
+    public void removeSubscriberTopic(int sub_id, int top_id) {
 
         String removeSubscriberTopicSql = "DELETE FROM subscriber_topic WHERE \n" +
-                "subscriber_id = '"+ sub_id + "' AND topic_id = '" + top_id + "';";
+                "subscriber_id = '" + sub_id + "' AND topic_id = '" + top_id + "';";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -303,8 +309,7 @@ public class DbConnection {
     }
 
 
-
-    public static void createTables(){
+    public static void createTables() {
 
         String topicSql = "CREATE TABLE IF NOT EXISTS topic (\n"
                 + "	id integer PRIMARY KEY,\n"
@@ -336,8 +341,8 @@ public class DbConnection {
                 + " FOREIGN KEY (topic_id) REFERENCES topic (id)"
                 + ");";
 
-          //String eventSql = "DROP TABLE event";
-         //String subscriberSql = "DROP TABLE subscriber";
+        //String eventSql = "DROP TABLE event";
+        //String subscriberSql = "DROP TABLE subscriber";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -358,45 +363,45 @@ public class DbConnection {
      */
     public static void main(String[] args) {
 
-            DbConnection conn = DbConnection.getInstance();
+        DbConnection conn = DbConnection.getInstance();
 
-            conn.insertTopic("a", "c");
-            conn.insertTopic("b", "d");
-            conn.insertTopic("g", "i");
-            ArrayList<Topic> topics = conn.getAllTopics();
-            for(Topic topic:topics){
-                System.out.println(topic);
-            }
+        conn.insertTopic("a", "c");
+        conn.insertTopic("b", "d");
+        conn.insertTopic("g", "i");
+        ArrayList<Topic> topics = conn.getAllTopics();
+        for (Topic topic : topics) {
+            System.out.println(topic);
+        }
 
-            conn.insertEvent(conn.getTopicId("a"),"Business", "Biz Journal",45678);
-            conn.insertEvent(conn.getTopicId("b"),"Sports", "Basketball", 45679);
+        conn.insertEvent(conn.getTopicId("a"), "Business", "Biz Journal", 45678);
+        conn.insertEvent(conn.getTopicId("b"), "Sports", "Basketball", 45679);
 
-            conn.insertSubscriber("10.10.256.1",12344);
-            conn.insertSubscriber("10.10.256.2",12345);
-            System.out.println(conn.getSubscriberId("10.10.256.1"));
-            System.out.println(conn.getTopicId("a"));
-            conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("a"));
-            conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("b"));
-            conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.2"), conn.getTopicId("g"));
+        conn.insertSubscriber("10.10.256.1", 12344);
+        conn.insertSubscriber("10.10.256.2", 12345);
+        System.out.println(conn.getSubscriberId("10.10.256.1"));
+        System.out.println(conn.getTopicId("a"));
+        conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("a"));
+        conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("b"));
+        conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.2"), conn.getTopicId("g"));
 
-            conn.removeSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("a"));
+        conn.removeSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("a"));
 
-            ArrayList<Topic> topics2 = conn.getSubscriberTopics(conn.getSubscriberId("10.10.256.1"),true);
+        ArrayList<Topic> topics2 = conn.getSubscriberTopics(conn.getSubscriberId("10.10.256.1"), true);
 
-            for(Topic topic2:topics2){
-                System.out.println("Subscribed "+topic2);
-            }
+        for (Topic topic2 : topics2) {
+            System.out.println("Subscribed " + topic2);
+        }
 
-            ArrayList<Topic> topics3 = conn.getSubscriberTopics(conn.getSubscriberId("10.10.256.1"),false);
-            for(Topic topic3:topics3){
-                System.out.println("Unsubscribed "+topic3);
-            }
+        ArrayList<Topic> topics3 = conn.getSubscriberTopics(conn.getSubscriberId("10.10.256.1"), false);
+        for (Topic topic3 : topics3) {
+            System.out.println("Unsubscribed " + topic3);
+        }
 
-            ArrayList<Event> events = conn.getAllEventsForSubscriber(conn.getSubscriberId("10.10.256.1"));
-            //ArrayList<Event> events = conn.getAllEvents();
-            for(Event event:events){
-                System.out.println("Subscribed events "+event);
-            }
+        ArrayList<Event> events = conn.getAllEventsForSubscriber("10.10.256.1");
+        //ArrayList<Event> events = conn.getAllEvents();
+        for (Event event : events) {
+            System.out.println("Subscribed events " + event);
+        }
 
 
     }

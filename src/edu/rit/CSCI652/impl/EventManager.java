@@ -64,12 +64,85 @@ public class EventManager{
 
 						// TODO
 						DbConnection.getInstance().insertSubscriber(Integer.toString(port), System.currentTimeMillis());
+						DbConnection.getInstance().insertSubscriberTopic(
+								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
+								topic.getId());
+
+						break;
+
 
 
 					case Message.SUBSCRIBE_REQUEST_TOPICS:
 
 						sendMessage = new Message();
 						sendMessage.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
+						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(port, true));
+
+						try {
+
+							// TODO
+							udpSystem.sendMessageLocal(sendMessage, port);
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+						break;
+
+					case Message.READ_REQUEST_EVENTS:
+
+
+						// TOD
+						ArrayList<Event> eventsArrayList = DbConnection.getInstance().getAllEventsForSubscriber(Integer.toString(port));
+
+						sendMessage = new Message();
+						sendMessage.setType(Message.READ_REQUEST_EVENTS);
+						sendMessage.setEventList(eventsArrayList);
+
+						try {
+							// TODO
+							udpSystem.sendMessageLocal(sendMessage, port);
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+
+						break;
+
+					case Message.UNSUBE_SELECT_TOPIC:
+
+
+						// TODO
+						DbConnection.getInstance().removeSubscriberTopic(
+								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
+								recvdMessage.getTopic().getId() );
+
+
+						break;
+
+					case Message.UNSUB_REQUEST_TOPICS:
+
+						//TODO
+						sendMessage = new Message();
+						sendMessage.setType(Message.UNSUB_REQUEST_TOPICS);
+						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(port, true));
+
+						try {
+							// TODO
+							udpSystem.sendMessageLocal(sendMessage, port);
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+						break;
+
+
+					case Message.ADVERTISE_REQUEST_TOPICS:
+
+						sendMessage = new Message();
+						sendMessage.setType(Message.ADVERTISE_REQUEST_TOPICS);
 						sendMessage.setTopicList(DbConnection.getInstance().getAllTopics());
 
 						try {
@@ -80,6 +153,7 @@ public class EventManager{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+
 
 						break;
 				}
