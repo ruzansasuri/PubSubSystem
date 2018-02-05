@@ -50,11 +50,13 @@ public class EventManager{
 						Event event = recvdMessage.getEvent();
 
 						conn.insertEvent(event.getTopicId(), event.getTitle(), event.getContent());
-
+						/*
 						ArrayList<Event> events = conn.getAllEvents();
 
 						for(Event ev:events)
 							System.out.println(ev);
+						*/
+						System.out.println("The content has been published");
 
 						break;
 
@@ -102,6 +104,27 @@ public class EventManager{
 						sendMessage = new Message();
 						sendMessage.setType(Message.READ_REQUEST_EVENTS);
 						sendMessage.setEventList(eventsArrayList);
+
+						try {
+							// TODO
+							udpSystem.sendMessageLocal(sendMessage, port);
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						DbConnection.getInstance().updateSubscriberLastActive(Integer.toString(port));
+
+						break;
+
+					case Message.READ_FROMKEYWORD_REQUEST_EVENTS:
+						Topic recvdTopic = recvdMessage.getTopic();
+
+						// TOD
+						ArrayList<Event> eventsList = DbConnection.getInstance().getAllEventsFromKeyword(Integer.toString(port),recvdTopic.getKeywords());
+
+						sendMessage = new Message();
+						sendMessage.setType(Message.READ_FROMKEYWORD_REQUEST_EVENTS);
+						sendMessage.setEventList(eventsList);
 
 						try {
 							// TODO

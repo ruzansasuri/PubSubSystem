@@ -146,6 +146,79 @@ public class DbConnection {
         return eventList;
     }
 
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+        String sql = "SELECT * FROM subscriber WHERE \n" +
+                "ipaddress = '" + ipAddress + "';";
+
+
+        int sublastactive = 0;
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            sublastactive = rs.getInt("lastactivedatetime");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Logging.print(sublastactive);
+
+
+
+        sql = "SELECT *  FROM topic WHERE \n" +
+                "keywords LIKE '%" + keyword + "%';";
+
+        ArrayList<Topic> topicList = new ArrayList<>();
+        ArrayList<Event> eventList = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                String words = rs.getString("keywords");
+                String name = rs.getString("name");
+                Topic topic = new Topic(id, name, words);
+                topicList.add(topic);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String topicIds = "";
+
+        for (Topic t : topicList) {
+            topicIds += t.getId() + ",";
+            Logging.print(t.getId());
+        }
+        topicIds = topicIds.substring(0, topicIds.length() - 1);
+
+        sql = "SELECT * FROM event WHERE \n" +
+                "topic_id IN (" + topicIds + ") AND publishdatetime >= '" + sublastactive + "';";
+
+        try (Connection conn2 = DriverManager.getConnection(databasePath);
+             Statement stmt2 = conn2.createStatement();
+             ResultSet rs2 = stmt2.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs2.next()) {
+                int id = rs2.getInt("id");
+                int topicId = rs2.getInt("topic_id");
+                String title = rs2.getString("title");
+                String content = rs2.getString("content");
+                eventList.add(new Event(topicId, title, content));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return eventList;
+    }
+
     public void insertTopic(String name, String keywords) {
 
         String insertTopicSql = "INSERT INTO topic(name, keywords)\n" +

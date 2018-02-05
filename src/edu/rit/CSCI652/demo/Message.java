@@ -19,9 +19,10 @@ public class Message
     public static final int SUBSCRIBE_REQUEST_TOPICS = 3;
     public static final int SUBSCRIBE_SELECTED_TOPIC = 4;
     public static final int READ_REQUEST_EVENTS = 5;
-    public static final int ADVERTISE_REQUEST_TOPICS = 6;
-    public static final int UNSUB_REQUEST_TOPICS = 7;
-    public static final int UNSUB_SELECT_TOPIC = 8;
+    public static final int READ_FROMKEYWORD_REQUEST_EVENTS = 6;
+    public static final int ADVERTISE_REQUEST_TOPICS = 7;
+    public static final int UNSUB_REQUEST_TOPICS = 8;
+    public static final int UNSUB_SELECT_TOPIC = 9;
 
 
 

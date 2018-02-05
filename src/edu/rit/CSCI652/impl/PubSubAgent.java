@@ -119,8 +119,21 @@ public class PubSubAgent {
 
                         ArrayList<Event> eventList = message.getEventList();
                         for (Event event : eventList) {
-                            System.out.println(event.getTitle());
-                            System.out.println(event.getContent());
+                            System.out.println("Title: "+event.getTitle());
+                            System.out.println("Content: "+event.getContent());
+                            System.out.println();
+                        }
+
+                        pubSubMenu.showMenu();
+
+                        break;
+
+                    case Message.READ_FROMKEYWORD_REQUEST_EVENTS:
+
+                        ArrayList<Event> eventsList = message.getEventList();
+                        for (Event event : eventsList) {
+                            System.out.println("Title: "+event.getTitle());
+                            System.out.println("Content: "+event.getContent());
                             System.out.println();
                         }
 
@@ -201,6 +214,26 @@ public class PubSubAgent {
 
                 Message message = new Message();
                 message.setType(Message.READ_REQUEST_EVENTS);
+
+                try {
+
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void invokeReadFromKeyword() {
+                Scanner in = new Scanner(System.in);
+                System.out.print("Enter the keywords:");
+                String keywords = in.next();
+                Message message = new Message();
+                message.setTopic(new Topic(0, "test", keywords));
+                message.setType(Message.READ_FROMKEYWORD_REQUEST_EVENTS);
 
                 try {
 
