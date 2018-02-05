@@ -21,7 +21,7 @@ public class Message
     public static final int READ_REQUEST_EVENTS = 5;
     public static final int ADVERTISE_REQUEST_TOPICS = 6;
     public static final int UNSUB_REQUEST_TOPICS = 7;
-    public static final int UNSUBE_SELECT_TOPIC = 8;
+    public static final int UNSUB_SELECT_TOPIC = 8;
 
 
 

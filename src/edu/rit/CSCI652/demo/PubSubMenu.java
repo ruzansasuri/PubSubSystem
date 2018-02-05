@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class PubSubMenu {
 
+    PubSubMenuInterface pubSubMenuInterface;
+
     public interface PubSubMenuInterface {
 
         void invokePublish();
@@ -28,7 +30,7 @@ public class PubSubMenu {
 
     public interface topicInterface {
 
-        void selectedTopic(Topic topic, String title, String message);
+        void selectedTopic(Topic topic);
     }
 
     public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface){
@@ -43,15 +45,15 @@ public class PubSubMenu {
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
 
-        System.out.print("Enter your title for the message:");
-        String title = in.next();
-        System.out.print("Enter your message:");
-        String msg = in.next();
-
-        topicInterface.selectedTopic(topicArrayList.get(choice-1),title, msg);
+        topicInterface.selectedTopic(topicArrayList.get(choice-1));
     }
 
-    public void showMenu(PubSubMenuInterface pubSubMenuInterface) {
+
+    public void setPubSubMenuInterface(PubSubMenuInterface pubSubMenuInterface) {
+        this.pubSubMenuInterface = pubSubMenuInterface;
+    }
+
+    public void showMenu() {
 
         System.out.println("***** PubSub Menu *****");
         Scanner in = new Scanner(System.in);
@@ -67,7 +69,7 @@ public class PubSubMenu {
         boolean exit = false;
         int option = 0;
 
-        do {
+
             System.out.print("Choose menu option : ");
             option = in.nextInt();
             switch (option) {
@@ -97,7 +99,7 @@ public class PubSubMenu {
                 default:
                     System.out.println("Invalid choice \n");
             }
-        } while (!exit);
+
 
         System.out.println("**** Exiting PubSub Menu ****\n");
     }

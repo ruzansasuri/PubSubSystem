@@ -49,7 +49,7 @@ public class EventManager{
 						DbConnection conn = DbConnection.getInstance();
 						Event event = recvdMessage.getEvent();
 
-						conn.insertEvent(event.getTopicId(), event.getTitle(), event.getContent(), event.getPublishDateTime());
+						conn.insertEvent(event.getTopicId(), event.getTitle(), event.getContent());
 
 						ArrayList<Event> events = conn.getAllEvents();
 
@@ -63,20 +63,24 @@ public class EventManager{
 						Topic topic = recvdMessage.getTopic();
 
 						// TODO
-						DbConnection.getInstance().insertSubscriber(Integer.toString(port), System.currentTimeMillis());
+						DbConnection.getInstance().insertSubscriber(Integer.toString(port), 0);
 						DbConnection.getInstance().insertSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
 								topic.getId());
+
+						System.out.println(port + " has subscribed to " + topic.getName());
 
 						break;
 
 
 
 					case Message.SUBSCRIBE_REQUEST_TOPICS:
-
+						DbConnection con = DbConnection.getInstance();
 						sendMessage = new Message();
 						sendMessage.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
-						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(port, true));
+
+						//TODO
+						sendMessage.setTopicList(con.getSubscriberTopics(con.getSubscriberId(String.valueOf(port)), false));
 
 						try {
 
@@ -106,17 +110,19 @@ public class EventManager{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-
+						DbConnection.getInstance().updateSubscriberLastActive(Integer.toString(port));
 
 						break;
 
-					case Message.UNSUBE_SELECT_TOPIC:
+					case Message.UNSUB_SELECT_TOPIC:
 
 
 						// TODO
 						DbConnection.getInstance().removeSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
 								recvdMessage.getTopic().getId() );
+
+						System.out.println(port + " has unsubbed from " + recvdMessage.getTopic().getName());
 
 
 						break;
@@ -126,7 +132,7 @@ public class EventManager{
 						//TODO
 						sendMessage = new Message();
 						sendMessage.setType(Message.UNSUB_REQUEST_TOPICS);
-						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(port, true));
+						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(DbConnection.getInstance().getSubscriberId(String.valueOf(port)), true));
 
 						try {
 							// TODO
@@ -135,16 +141,17 @@ public class EventManager{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+
+
 
 						break;
 
 
 					case Message.ADVERTISE_REQUEST_TOPICS:
 
+						DbConnection.getInstance().insertTopic(recvdMessage.getTopic().getName(), recvdMessage.getTopic().getKeywords());
 						sendMessage = new Message();
 						sendMessage.setType(Message.ADVERTISE_REQUEST_TOPICS);
-						sendMessage.setTopicList(DbConnection.getInstance().getAllTopics());
-
 						try {
 
 							// TODO
@@ -153,6 +160,8 @@ public class EventManager{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+
+						System.out.println(port + " has added topic:" + recvdMessage.getTopic().getName());
 
 
 						break;

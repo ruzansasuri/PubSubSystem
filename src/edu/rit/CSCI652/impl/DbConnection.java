@@ -47,10 +47,10 @@ public class DbConnection {
         }
     }
 
-    public void insertEvent(int topicId, String title, String content, long publishDateTime) {
+    public void insertEvent(int topicId, String title, String content) {
 
 
-        int time = (int) (publishDateTime / 1000L);
+        int time = (int)System.currentTimeMillis();
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
                 "VALUES('" + topicId + "', '" + title + "', '" + content + "', '" + time + "');";
 
@@ -81,7 +81,7 @@ public class DbConnection {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
                 int publishDateTime = rs.getInt("publishdatetime");
-                eventList.add(new Event(topicId, title, content, (long) publishDateTime));
+                eventList.add(new Event(topicId, title, content));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -92,7 +92,7 @@ public class DbConnection {
 
     public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
 
-        String sql = "SELECT lastactivedatetime FROM subscriber WHERE \n" +
+        String sql = "SELECT * FROM subscriber WHERE \n" +
                 "ipaddress = '" + ipAddress + "';";
 
         ArrayList<Event> eventList = new ArrayList<>();
@@ -105,7 +105,7 @@ public class DbConnection {
 
             // loop through the result set
             sublastactive = rs.getInt("lastactivedatetime");
-            subId = rs.getInt("lastactivedatetime");
+            subId = rs.getInt("id");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -117,10 +117,10 @@ public class DbConnection {
         String topicIds = "";
 
 
-//        for (Topic t : subTopics) {
-//            topicIds += t.getId() + ",";
-//            System.out.println(t.getId());
-//        }
+        for (Topic t : subTopics) {
+           topicIds += t.getId() + ",";
+            System.out.println(t.getId());
+        }
         topicIds = topicIds.substring(0, topicIds.length() - 1);
 
         sql = "SELECT * FROM event WHERE \n" +
@@ -137,7 +137,7 @@ public class DbConnection {
                 String title = rs2.getString("title");
                 String content = rs2.getString("content");
                 int publishDateTime = rs2.getInt("publishdatetime");
-                eventList.add(new Event(topicId, title, content, (long) publishDateTime));
+                eventList.add(new Event(topicId, title, content));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -264,14 +264,32 @@ public class DbConnection {
     }
 
     public void insertSubscriber(String ipaddress, long lastactivedatetime) {
-
+        /*
         String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime)\n" +
                 "VALUES('" + ipaddress + "', '" + lastactivedatetime + "');";
-
+        */
+        String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime)\n" +
+                "SELECT '" + ipaddress + "', '" + lastactivedatetime + "' WHERE NOT EXISTS " +
+                "(SELECT 1 FROM subscriber WHERE ipaddress ='" +ipaddress+ "');";
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
 
             stmt.execute(insertSubscriberSql);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateSubscriberLastActive(String ipaddress) {
+        int time = (int)System.currentTimeMillis();
+        String updateSubscriberSql = "UPDATE subscriber\n"+
+                "SET lastactivedatetime ='"+time+"' WHERE ipaddress ='" +ipaddress+ "'";
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement()) {
+
+            stmt.execute(updateSubscriberSql);
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -320,7 +338,7 @@ public class DbConnection {
 
         String eventSql = "CREATE TABLE IF NOT EXISTS event (\n"
                 + "	id integer PRIMARY KEY,\n"
-                + " topic_id integer UNIQUE NOT NULL,\n"
+                + " topic_id integer NOT NULL,\n"
                 + "	title text NOT NULL,\n"
                 + "	content text NOT NULL,\n"
                 + "	publishdatetime integer NOT NULL,\n"
@@ -337,12 +355,13 @@ public class DbConnection {
         String subscriberTopicSql = "CREATE TABLE IF NOT EXISTS subscriber_topic (\n"
                 + "	subscriber_id integer NOT NULL,\n"
                 + "	topic_id integer NOT NULL,\n"
+                + " PRIMARY KEY (subscriber_id, topic_id), \n"
                 + " FOREIGN KEY (subscriber_id) REFERENCES subscriber (id),\n"
                 + " FOREIGN KEY (topic_id) REFERENCES topic (id)"
                 + ");";
 
         //String eventSql = "DROP TABLE event";
-        //String subscriberSql = "DROP TABLE subscriber";
+        // String subscriberTopicSql = "DROP TABLE subscriber_topic";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -373,8 +392,8 @@ public class DbConnection {
             System.out.println(topic);
         }
 
-        conn.insertEvent(conn.getTopicId("a"), "Business", "Biz Journal", 45678);
-        conn.insertEvent(conn.getTopicId("b"), "Sports", "Basketball", 45679);
+        conn.insertEvent(conn.getTopicId("a"), "Business", "Biz Journal");
+        conn.insertEvent(conn.getTopicId("b"), "Sports", "Basketball");
 
         conn.insertSubscriber("10.10.256.1", 12344);
         conn.insertSubscriber("10.10.256.2", 12345);

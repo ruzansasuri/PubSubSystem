@@ -11,7 +11,7 @@ public class Topic {
 	public int getId() {
 		return id;
 	}
-	public Topic(int id, String keywords, String name) {
+	public Topic(int id, String name, String keywords) {
 		this.id = id;
 		this.keywords = keywords;
 		this.name = name;

@@ -1,284 +1,239 @@
 package edu.rit.CSCI652.impl;
+
 import edu.rit.CSCI652.demo.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
-public class PubSubAgent implements PublisherI, SubscriberI
-{
+public class PubSubAgent {
 
-	public static final String SERVER_IP = "6789";
+    public static final String SERVER_IP = "6789";
 
 
-	public static void main(String[] args){
+    public static void main(String[] args) {
 
 
-		int port = 9999; //DEFAULT PORT
-		if(args.length == 1){
-			port = Integer.parseInt(args[0]);
-		}
+        int port = 9999; //DEFAULT PORT
+        if (args.length == 1) {
+            port = Integer.parseInt(args[0]);
+        }
 
-		UDPSystem udpSystem = new UDPSystem(port);
-		udpSystem.getMessages(new ServerI() {
+        PubSubMenu pubSubMenu = new PubSubMenu();
 
-			@Override
-			public void success(Message message, String ip, int port) {
+        UDPSystem udpSystem = new UDPSystem(port);
+        udpSystem.getMessages(new ServerI() {
 
-				System.out.println("Server port:" + port + ", Message Type:" + message.getType());
+            @Override
+            public void success(Message message, String ip, int port) {
 
-				switch (message.getType()){
+                Logging.print("Server port:" + port + ", Message Type:" + message.getType());
 
-					case Message.PUBLISH_REQUEST_TOPICS:
+                switch (message.getType()) {
 
+                    case Message.PUBLISH_REQUEST_TOPICS:
 
-						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-							@Override
-							public void selectedTopic(Topic topic, String title, String content) {
 
-								Event event = new Event(topic.getId(), title, content, System.currentTimeMillis());
-								Message sendMessage = new Message();
-								sendMessage.setType(Message.PUBLISH_SEND_EVENT);
-								sendMessage.setEvent(event);
-								try {
+                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                            @Override
+                            public void selectedTopic(Topic topic) {
 
-									//TODO
-									udpSystem.sendMessageLocal(sendMessage, port);
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							}
-						});
+                                Scanner in = new Scanner(System.in);
+                                System.out.print("Enter your title for the content:");
+                                String title = in.next();
+                                System.out.print("Enter your content:");
+                                String content = in.next();
 
-						break;
+                                Event event = new Event(topic.getId(), title, content);
+                                Message sendMessage = new Message();
+                                sendMessage.setType(Message.PUBLISH_SEND_EVENT);
+                                sendMessage.setEvent(event);
+                                try {
 
-					case Message.SUBSCRIBE_REQUEST_TOPICS:
+                                    //TODO
+                                    udpSystem.sendMessageLocal(sendMessage, port);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
 
+                        pubSubMenu.showMenu();
 
-						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-							@Override
-							public void selectedTopic(Topic topic, String title, String content) {
+                        break;
 
-								Message sendMessage = new Message();
-								sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
-								sendMessage.setTopic(topic);
-								try {
+                    case Message.SUBSCRIBE_REQUEST_TOPICS:
 
-									//TODO
-									udpSystem.sendMessageLocal(sendMessage, port);
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							}
-						});
 
+                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                            @Override
+                            public void selectedTopic(Topic topic) {
 
-						break;
+                                Message sendMessage = new Message();
+                                sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
+                                sendMessage.setTopic(topic);
+                                try {
 
-					case Message.UNSUB_REQUEST_TOPICS:
+                                    //TODO
+                                    udpSystem.sendMessageLocal(sendMessage, port);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
 
+                        pubSubMenu.showMenu();
 
-						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-							@Override
-							public void selectedTopic(Topic topic, String title, String content) {
 
-								Message sendMessage = new Message();
-								sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
-								sendMessage.setTopic(topic);
-								try {
+                        break;
 
-									//TODO
-									udpSystem.sendMessageLocal(sendMessage, port);
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							}
-						});
+                    case Message.UNSUB_REQUEST_TOPICS:
 
 
-						break;
+                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                            @Override
+                            public void selectedTopic(Topic topic) {
 
+                                Message sendMessage = new Message();
+                                sendMessage.setType(Message.UNSUB_SELECT_TOPIC);
+                                sendMessage.setTopic(topic);
+                                try {
 
-					case Message.READ_REQUEST_EVENTS:
+                                    //TODO
+                                    udpSystem.sendMessageLocal(sendMessage, port);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
 
-						ArrayList<Event> eventList = message.getEventList();
-						for(Event event:eventList){
-							System.out.println(event.getTitle());
-							System.out.println(event.getContent());
-							System.out.println();
-						}
+                        pubSubMenu.showMenu();
 
-						break;
 
-					case Message.ADVERTISE_REQUEST_TOPICS:
+                        break;
 
-						new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-							@Override
-							public void selectedTopic(Topic topic, String title, String content) {
 
-								Event event = new Event(topic.getId(), title, content, System.currentTimeMillis());
-								Message sendMessage = new Message();
-								sendMessage.setType(Message.PUBLISH_SEND_EVENT);
-								sendMessage.setEvent(event);
-								try {
+                    case Message.READ_REQUEST_EVENTS:
 
-									//TODO
-									udpSystem.sendMessageLocal(sendMessage, port);
-								} catch (IOException e) {
-									e.printStackTrace();
-								}
-							}
-						});
+                        ArrayList<Event> eventList = message.getEventList();
+                        for (Event event : eventList) {
+                            System.out.println(event.getTitle());
+                            System.out.println(event.getContent());
+                            System.out.println();
+                        }
 
-						break;
-				}
+                        pubSubMenu.showMenu();
 
-			}
-		});
+                        break;
 
-		PubSubMenu pubSubMenu = new PubSubMenu();
-		pubSubMenu.showMenu(new PubSubMenu.PubSubMenuInterface() {
+                    case Message.ADVERTISE_REQUEST_TOPICS:
+                        pubSubMenu.showMenu();
+                        break;
+                }
 
-			@Override
-			public void invokePublish() {
+            }
+        });
 
-				Message message = new Message();
-				message.setType(Message.PUBLISH_REQUEST_TOPICS);
 
-				try {
+        pubSubMenu.setPubSubMenuInterface(new PubSubMenu.PubSubMenuInterface() {
 
-					//TODO
-					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+            @Override
+            public void invokePublish() {
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+                Message message = new Message();
+                message.setType(Message.PUBLISH_REQUEST_TOPICS);
 
-			@Override
-			public void invokeAdvertise() {
+                try {
 
-				Message message = new Message();
-				message.setType(Message.ADVERTISE_REQUEST_TOPICS);
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
 
-				try {
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-					//TODO
-					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+            @Override
+            public void invokeAdvertise() {
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                Scanner in = new Scanner(System.in);
+                System.out.print("Enter your topic to advertise:");
+                String topicName = in.next();
 
-			}
+                System.out.print("Enter your keywords:");
+                String keywords = in.next();
 
-			@Override
-			public void invokeSubscribe() {
+                Message message = new Message();
+                message.setTopic(new Topic(0, topicName, keywords));
+                message.setType(Message.ADVERTISE_REQUEST_TOPICS);
 
-				Message message = new Message();
-				message.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
+                try {
 
-				try {
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
 
-					//TODO
-					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+            }
 
-			@Override
-			public void invokeRead() {
+            @Override
+            public void invokeSubscribe() {
 
-				Message message = new Message();
-				message.setType(Message.READ_REQUEST_EVENTS);
+                Message message = new Message();
+                message.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
 
-				try {
+                try {
 
-					//TODO
-					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-			}
+            @Override
+            public void invokeRead() {
 
-			@Override
-			public void invokeUnsubscribe() {
+                Message message = new Message();
+                message.setType(Message.READ_REQUEST_EVENTS);
 
-				Message message = new Message();
-				message.setType(Message.UNSUB_REQUEST_TOPICS);
+                try {
 
-				try {
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
 
-					//TODO
-					udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+            }
 
+            @Override
+            public void invokeUnsubscribe() {
 
-			}
-		});
-	}
+                Message message = new Message();
+                message.setType(Message.UNSUB_REQUEST_TOPICS);
 
-	@Override
-	public void displayTopics(List<Topic> topics)
-	{
-		//please change the following.
+                try {
 
-	}
+                    //TODO
+                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
 
-	@Override
-	public void displayEvents(List<Event> events)
-	{
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-	}
 
-	@Override
-	public void subscribe(Topic topic)
-	{
+            }
+        });
 
-	}
+        pubSubMenu.showMenu();
+    }
 
-	@Override
-	public void subscribe(String keyword)
-	{
-	}
-
-	@Override
-	public void unsubscribe(Topic topic)
-	{
-
-	}
-
-	@Override
-	public void unsubscribe()
-	{
-
-
-	}
-
-	@Override
-	public void listSubscribedTopics()
-	{
-
-	}
-
-	@Override
-	public void publish(Event event)
-	{
-
-	}
-
-	@Override
-	public void advertise(Topic newTopic)
-	{
-
-
-	}
 
 }
