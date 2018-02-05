@@ -1,6 +1,6 @@
 FROM openjdk
 CMD mkdir project
-COPY project project
+COPY lib project
 EXPOSE 8080
-WORKDIR /project
-CMD java -cp src HelloWorld
+WORKDIR /project/out
+CMD java -cp "../lib/;" edu.rit.CSCI652.impl.PubSubAgent
