@@ -64,7 +64,7 @@ public class UDPSystem {
 
 
         InetAddress address = InetAddress.getByName("localhost");
-        System.out.println("test:" + socket.getLocalPort());
+        Logging.print("test:" + socket.getLocalPort());
 
 
         Gson gson = new Gson();

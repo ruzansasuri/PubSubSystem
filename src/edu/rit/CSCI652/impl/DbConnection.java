@@ -38,8 +38,8 @@ public class DbConnection {
 
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+                Logging.print("The driver name is " + meta.getDriverName());
+                Logging.print("A new database has been created.");
             }
 
         } catch (SQLException e) {
@@ -52,7 +52,7 @@ public class DbConnection {
 
         int time = (int)System.currentTimeMillis();
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
-                "VALUES('" + topicId + "', '" + title + "', '" + content + "', '" + time + "');";
+                "VALUES(\"" + topicId + "\", \"" + title + "\", \"" + content + "\", \"" + time + "\");";
 
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -110,7 +110,7 @@ public class DbConnection {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(sublastactive);
+        Logging.print(sublastactive);
 
         ArrayList<Topic> subTopics = getSubscriberTopics(subId, true);
 
@@ -119,7 +119,7 @@ public class DbConnection {
 
         for (Topic t : subTopics) {
            topicIds += t.getId() + ",";
-            System.out.println(t.getId());
+            Logging.print(t.getId());
         }
         topicIds = topicIds.substring(0, topicIds.length() - 1);
 

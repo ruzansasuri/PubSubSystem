@@ -9,4 +9,10 @@ public class Logging {
         if(on)
             System.out.println(s);
     }
+
+    public static void print(int s){
+
+        if(on)
+            System.out.println(String.valueOf(s));
+    }
 }

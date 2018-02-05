@@ -41,7 +41,7 @@ public class PubSubMenu {
             idx++;
         }
 
-        System.out.print("Choose a topic:");
+        System.out.print("\nChoose a topic:");
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
 
@@ -55,7 +55,7 @@ public class PubSubMenu {
 
     public void showMenu() {
 
-        System.out.println("***** PubSub Menu *****");
+        System.out.println("\n***** PubSub Menu *****");
         Scanner in = new Scanner(System.in);
 
         System.out.println("1. Publish");

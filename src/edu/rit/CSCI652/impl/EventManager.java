@@ -21,7 +21,7 @@ public class EventManager{
 			@Override
 			public void success(Message recvdMessage, String ip, int port) {
 
-				System.out.println("Sub port:" + port + ", type:" + recvdMessage.getType());
+				Logging.print("Sub port:" + port + ", type:" + recvdMessage.getType());
 
 				Message sendMessage = null;
 
@@ -122,7 +122,7 @@ public class EventManager{
 								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
 								recvdMessage.getTopic().getId() );
 
-						System.out.println(port + " has unsubbed from " + recvdMessage.getTopic().getName());
+						System.out.println(port + " has unsubscribed from " + recvdMessage.getTopic().getName());
 
 
 						break;
