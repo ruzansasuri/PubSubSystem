@@ -102,7 +102,7 @@ public class UDPSystem {
                         int port = receivePacket.getPort();
 
                         String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
-                        //System.out.println(messageStr);
+                        // System.out.println(messageStr);
 
                         new Thread() {
                             @Override

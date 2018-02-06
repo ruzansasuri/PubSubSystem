@@ -24,7 +24,7 @@ public class DbConnection {
     }
 
     public DbConnection() {
-
+	Clas.forName("org.sqlite.JDBC");
         String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
         databasePath = new File(databaseDir, "pubsub.db").toString();
         createDatabase();

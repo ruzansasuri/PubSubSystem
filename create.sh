@@ -2,7 +2,7 @@
 PROJDIR="/home/ruzan/DS/PubSubSystem/PubSubSystem/src/edu/rit/CSCI652/"
 
 files=`find -name "*.java"`
-javac -d "out" -classpath lib/gson-2.6.2.jar $files
+javac -d "out" -classpath "lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar" $files
 if [ $? -eq 0 ]
 then
 	echo Compiled..

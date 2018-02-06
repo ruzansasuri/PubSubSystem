@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class PubSubAgent
 {
 
-    public static final String SERVER_IP = "172.17.0.1";
+    public static final String SERVER_IP = "172.17.0.2";
 
     public static void main(String[] args)
     {
@@ -179,8 +179,8 @@ public class PubSubAgent
 
                     //TODO
                     udpSystem.sendMessage(message, SERVER_IP);
-
-                } catch (IOException e) {
+                
+		} catch (IOException e) {
                     e.printStackTrace();
                 }
 
