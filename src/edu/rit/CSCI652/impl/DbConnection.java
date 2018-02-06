@@ -18,22 +18,33 @@ public class DbConnection {
     private static final DbConnection INSTANCE = new DbConnection();
 
 
-    public static DbConnection getInstance() {
-
+    public static DbConnection getInstance()
+    {
         return INSTANCE;
     }
 
     public DbConnection() {
 	Clas.forName("org.sqlite.JDBC");
+    public DbConnection()
+    {
+        try
+        {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
         String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
+        Logging.print("jdbc:sqlite:" + System.getProperty("user.dir"));
+        Logging.print(databaseDir);
         databasePath = new File(databaseDir, "pubsub.db").toString();
         createDatabase();
         createTables();
 
     }
 
-    public static void createDatabase() {
-
+    public static void createDatabase()
+    {
         try (Connection conn = DriverManager.getConnection(databasePath)) {
 
             if (conn != null) {
@@ -47,9 +58,8 @@ public class DbConnection {
         }
     }
 
-    public void insertEvent(int topicId, String title, String content) {
-
-
+    public void insertEvent(int topicId, String title, String content)
+    {
         int time = (int)System.currentTimeMillis();
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
                 "VALUES(\"" + topicId + "\", \"" + title + "\", \"" + content + "\", \"" + time + "\");";
