@@ -37,7 +37,7 @@ public class EventManager{
 						try {
 
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -65,9 +65,9 @@ public class EventManager{
 						Topic topic = recvdMessage.getTopic();
 
 						// TODO
-						DbConnection.getInstance().insertSubscriber(Integer.toString(port), 0);
+						DbConnection.getInstance().insertSubscriber(ip, 0);
 						DbConnection.getInstance().insertSubscriberTopic(
-								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
+								DbConnection.getInstance().getSubscriberId(ip),
 								topic.getId());
 
 						System.out.println(port + " has subscribed to " + topic.getName());
@@ -82,12 +82,12 @@ public class EventManager{
 						sendMessage.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
 
 						//TODO
-						sendMessage.setTopicList(con.getSubscriberTopics(con.getSubscriberId(String.valueOf(port)), false));
+						sendMessage.setTopicList(con.getSubscriberTopics(con.getSubscriberId(ip), false));
 
 						try {
 
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -99,7 +99,7 @@ public class EventManager{
 
 
 						// TOD
-						ArrayList<Event> eventsArrayList = DbConnection.getInstance().getAllEventsForSubscriber(Integer.toString(port));
+						ArrayList<Event> eventsArrayList = DbConnection.getInstance().getAllEventsForSubscriber(ip);
 
 						sendMessage = new Message();
 						sendMessage.setType(Message.READ_REQUEST_EVENTS);
@@ -107,12 +107,12 @@ public class EventManager{
 
 						try {
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-						DbConnection.getInstance().updateSubscriberLastActive(Integer.toString(port));
+						DbConnection.getInstance().updateSubscriberLastActive(ip);
 
 						break;
 
@@ -120,7 +120,7 @@ public class EventManager{
 						Topic recvdTopic = recvdMessage.getTopic();
 
 						// TOD
-						ArrayList<Event> eventsList = DbConnection.getInstance().getAllEventsFromKeyword(Integer.toString(port),recvdTopic.getKeywords());
+						ArrayList<Event> eventsList = DbConnection.getInstance().getAllEventsFromKeyword(ip,recvdTopic.getKeywords());
 
 						sendMessage = new Message();
 						sendMessage.setType(Message.READ_FROMKEYWORD_REQUEST_EVENTS);
@@ -128,12 +128,12 @@ public class EventManager{
 
 						try {
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-						DbConnection.getInstance().updateSubscriberLastActive(Integer.toString(port));
+						DbConnection.getInstance().updateSubscriberLastActive(ip);
 
 						break;
 
@@ -142,7 +142,7 @@ public class EventManager{
 
 						// TODO
 						DbConnection.getInstance().removeSubscriberTopic(
-								DbConnection.getInstance().getSubscriberId(Integer.toString(port)),
+								DbConnection.getInstance().getSubscriberId(ip),
 								recvdMessage.getTopic().getId() );
 
 						System.out.println(port + " has unsubscribed from " + recvdMessage.getTopic().getName());
@@ -155,11 +155,11 @@ public class EventManager{
 						//TODO
 						sendMessage = new Message();
 						sendMessage.setType(Message.UNSUB_REQUEST_TOPICS);
-						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(DbConnection.getInstance().getSubscriberId(String.valueOf(port)), true));
+						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(DbConnection.getInstance().getSubscriberId(ip), true));
 
 						try {
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -175,18 +175,17 @@ public class EventManager{
 						DbConnection.getInstance().insertTopic(recvdMessage.getTopic().getName(), recvdMessage.getTopic().getKeywords());
 						sendMessage = new Message();
 						sendMessage.setType(Message.ADVERTISE_REQUEST_TOPICS);
-						try {
+						try 
+						{
 
 							// TODO
-							udpSystem.sendMessageLocal(sendMessage, port);
+							udpSystem.sendMessage(sendMessage, ip);
 
-						} catch (IOException e) {
+						} 
+						catch (IOException e) {
 							e.printStackTrace();
 						}
-
 						System.out.println(port + " has added topic:" + recvdMessage.getTopic().getName());
-
-
 						break;
 				}
 			}

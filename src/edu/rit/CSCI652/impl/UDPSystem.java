@@ -15,10 +15,7 @@ public class UDPSystem {
 
     private DatagramSocket socket;
     private boolean running;
-    private String eventManagerIP;
     private boolean receiving;
-    ServerI agent;
-
 
     public UDPSystem() {
         try {

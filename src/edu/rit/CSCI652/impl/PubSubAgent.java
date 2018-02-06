@@ -8,38 +8,34 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class PubSubAgent {
+public class PubSubAgent
+{
 
-    public static final String SERVER_IP = "6789";
+    public static final String SERVER_IP = "720.0.0.1";
 
-
-    public static void main(String[] args) {
-
-
+    public static void main(String[] args)
+    {
         int port = 9999; //DEFAULT PORT
-        if (args.length == 1) {
-            port = Integer.parseInt(args[0]);
-        }
+
 
         PubSubMenu pubSubMenu = new PubSubMenu();
 
         UDPSystem udpSystem = new UDPSystem(port);
-        udpSystem.getMessages(new ServerI() {
-
+        udpSystem.getMessages(new ServerI()
+        {
             @Override
-            public void success(Message message, String ip, int port) {
-
+            public void success(Message message, String ip, int port)
+            {
                 Logging.print("Server port:" + port + ", Message Type:" + message.getType());
 
-                switch (message.getType()) {
-
+                switch (message.getType())
+                {
                     case Message.PUBLISH_REQUEST_TOPICS:
-
-
-                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface()
+                        {
                             @Override
-                            public void selectedTopic(Topic topic) {
-
+                            public void selectedTopic(Topic topic)
+                            {
                                 Scanner in = new Scanner(System.in);
                                 System.out.print("Enter your title for the content:");
                                 String title = in.next();
@@ -50,48 +46,45 @@ public class PubSubAgent {
                                 Message sendMessage = new Message();
                                 sendMessage.setType(Message.PUBLISH_SEND_EVENT);
                                 sendMessage.setEvent(event);
-                                try {
-
+                                try
+                                {
                                     //TODO
-                                    udpSystem.sendMessageLocal(sendMessage, port);
-                                } catch (IOException e) {
+                                    udpSystem.sendMessage(sendMessage, ip);
+                                }
+                                catch (IOException e)
+                                {
                                     e.printStackTrace();
                                 }
                             }
                         });
-
                         pubSubMenu.showMenu();
-
                         break;
 
                     case Message.SUBSCRIBE_REQUEST_TOPICS:
-
-
-                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface()
+                        {
                             @Override
-                            public void selectedTopic(Topic topic) {
-
+                            public void selectedTopic(Topic topic)
+                            {
                                 Message sendMessage = new Message();
                                 sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
                                 sendMessage.setTopic(topic);
-                                try {
-
+                                try
+                                {
                                     //TODO
-                                    udpSystem.sendMessageLocal(sendMessage, port);
-                                } catch (IOException e) {
+                                    udpSystem.sendMessage(sendMessage, ip);
+                                }
+                                catch (IOException e)
+                                {
                                     e.printStackTrace();
                                 }
                             }
                         });
 
                         pubSubMenu.showMenu();
-
-
                         break;
 
                     case Message.UNSUB_REQUEST_TOPICS:
-
-
                         new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
                             @Override
                             public void selectedTopic(Topic topic) {
@@ -102,7 +95,7 @@ public class PubSubAgent {
                                 try {
 
                                     //TODO
-                                    udpSystem.sendMessageLocal(sendMessage, port);
+                                    udpSystem.sendMessage(sendMessage, ip);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -161,7 +154,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    udpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -185,7 +178,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    udpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -202,7 +195,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    udpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -215,12 +208,13 @@ public class PubSubAgent {
                 Message message = new Message();
                 message.setType(Message.READ_REQUEST_EVENTS);
 
-                try {
-
+                try
+                {
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
-
-                } catch (IOException e) {
+                    udpSystem.sendMessage(message, SERVER_IP);
+                }
+                catch (IOException e)
+                {
                     e.printStackTrace();
                 }
 
@@ -238,7 +232,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    udpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -255,7 +249,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessageLocal(message, Integer.parseInt(SERVER_IP));
+                    udpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
