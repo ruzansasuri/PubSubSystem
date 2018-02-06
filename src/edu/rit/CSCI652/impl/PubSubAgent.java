@@ -179,8 +179,8 @@ public class PubSubAgent
 
                     //TODO
                     udpSystem.sendMessage(message, SERVER_IP);
-
-                } catch (IOException e) {
+                
+		} catch (IOException e) {
                     e.printStackTrace();
                 }
 

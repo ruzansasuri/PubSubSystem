@@ -23,6 +23,8 @@ public class DbConnection {
         return INSTANCE;
     }
 
+    public DbConnection() {
+	Clas.forName("org.sqlite.JDBC");
     public DbConnection()
     {
         try
