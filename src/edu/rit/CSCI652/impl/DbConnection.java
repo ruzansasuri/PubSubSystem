@@ -26,7 +26,7 @@ public class DbConnection {
 
     private DbConnection()
     {
-        String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
+        String databaseDir = new File("jdbc:sqlite:/project/database").toString(); //+ System.getProperty("user.dir"), "database").toString()
         Logging.print("jdbc:sqlite:" + System.getProperty("user.dir"));
         Logging.print(databaseDir);
         databasePath = new File(databaseDir, "pubsub.db").toString();
@@ -38,16 +38,22 @@ public class DbConnection {
 
     public static void createDatabase()
     {
-        try (Connection conn = DriverManager.getConnection(databasePath)) {
+        try (Connection conn = DriverManager.getConnection(databasePath)){// "jdbc:sqlite::memory:")) {
 
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
                 Logging.print("The driver name is " + meta.getDriverName());
                 Logging.print("A new database has been created.");
             }
+	    else
+	    {
+		Logging.print("ERROR!!");
+	    }
+
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+	    e.printStackTrace();
         }
     }
 
