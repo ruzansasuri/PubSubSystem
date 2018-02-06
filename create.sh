@@ -8,6 +8,6 @@ then
 	echo Compiled..
 	docker image rm pubsub_sub
 	docker image rm pubsub_em
-	docker image build -f Dockerfile_sub -t pubsub_sub .
-	docker image build -f Dockerfile_em -t pubsub_em .
+	docker image build -e EventManager -t pubsub_sub .
+	docker image build -e PubSubAgent -t pubsub_em .
 fi
