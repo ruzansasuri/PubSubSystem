@@ -1,5 +1,7 @@
 package edu.rit.CSCI652.impl;
 
+import org.sqlite.JDBC;
+
 import edu.rit.CSCI652.demo.Event;
 import edu.rit.CSCI652.demo.Topic;
 
@@ -25,13 +27,6 @@ public class DbConnection {
 
     public DbConnection()
     {
-        try
-        {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
         String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
         Logging.print("jdbc:sqlite:" + System.getProperty("user.dir"));
         Logging.print(databaseDir);
