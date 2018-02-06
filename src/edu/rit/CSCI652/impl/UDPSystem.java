@@ -23,7 +23,7 @@ public class UDPSystem {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        System.out.println("Connected.");
+        Logging.print("Connected.");
         receiving = false;
     }
 
@@ -33,7 +33,7 @@ public class UDPSystem {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        System.out.println("Connected.");
+        Logging.print("Connected.");
         receiving = false;
     }
 
@@ -47,7 +47,7 @@ public class UDPSystem {
 
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 6789);
         socket.send(packet);
-        System.out.println(message);
+        Logging.print(messageStr);
     }
 
     public void sendMessage(Message message, List<String> iPAddresses) throws IOException {
@@ -103,8 +103,6 @@ public class UDPSystem {
                         int port = receivePacket.getPort();
 
                         String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
-                        // System.out.println(messageStr);
-//                        System.out.println(messageStr);
 
                         new Thread() {
                             @Override
