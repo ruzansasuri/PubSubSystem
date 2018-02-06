@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class PubSubAgent
 {
 
-    public static final String SERVER_IP = "720.0.0.1";
+    public static final String SERVER_IP = "172.17.0.1";
 
     public static void main(String[] args)
     {

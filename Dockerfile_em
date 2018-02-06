@@ -1,0 +1,6 @@
+FROM openjdk
+CMD mkdir project
+COPY . project
+EXPOSE 8080
+WORKDIR /project
+CMD java -classpath"out:lib/gson-2.6.2.jar;" edu.rit.CSCI652.impl.EventManager
