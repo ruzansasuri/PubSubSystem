@@ -1,5 +1,7 @@
 package edu.rit.CSCI652.impl;
 
+import org.sqlite.JDBC;
+
 import edu.rit.CSCI652.demo.Event;
 import edu.rit.CSCI652.demo.Topic;
 
