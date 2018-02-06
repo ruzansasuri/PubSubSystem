@@ -13,4 +13,7 @@ then
 	docker image rm pubsub_em
 	docker image build -t pubsub_em --build-arg SYSTEM_TYPE=EventManager .
 	docker image build -t pubsub_sub --build-arg SYSTEM_TYPE=PubSubAgent .
+else
+then
+	exit 1
 fi

@@ -100,3 +100,1763 @@ Successfully tagged pubsub_sub:latest
   symbol:   variable Clas
   location: class DbConnection
 1 error
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+  ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: > expected
+=======
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+   ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: ';' expected
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+                                                ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:112: error: ';' expected
+                        new Thread() {
+                                    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:114: error: ';' expected
+                            public void run() {
+                                           ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:120: error: illegal start of expression
+                        }.start();
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+87 errors
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+  ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: > expected
+=======
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+   ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: ';' expected
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+                                                ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:112: error: ';' expected
+                        new Thread() {
+                                    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:114: error: ';' expected
+                            public void run() {
+                                           ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:120: error: illegal start of expression
+                        }.start();
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+87 errors
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+  ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: > expected
+=======
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+   ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: ';' expected
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+                                                ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:112: error: ';' expected
+                        new Thread() {
+                                    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:114: error: ';' expected
+                            public void run() {
+                                           ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:120: error: illegal start of expression
+                        }.start();
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+87 errors
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+  ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: > expected
+=======
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+   ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: ';' expected
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+                                                ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:112: error: ';' expected
+                        new Thread() {
+                                    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:114: error: ';' expected
+                            public void run() {
+                                           ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:120: error: illegal start of expression
+                        }.start();
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+87 errors
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+  ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:106: error: illegal start of expression
+<<<<<<< HEAD
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: > expected
+=======
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:108: error: illegal start of expression
+=======
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+   ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: illegal start of expression
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+      ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:110: error: ';' expected
+>>>>>>> dac5ecf67b72d4d84ecb27637564f01a3022a483
+                                                ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:112: error: ';' expected
+                        new Thread() {
+                                    ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:114: error: ';' expected
+                            public void run() {
+                                           ^
+./src/edu/rit/CSCI652/impl/UDPSystem.java:120: error: illegal start of expression
+                        }.start();
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+87 errors
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+74 errors
+./create.sh: line 17: syntax error near unexpected token `then'
+./create.sh: line 17: `then'
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: illegal start of expression
+    public DbConnection()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:28: error: ';' expected
+    public DbConnection()
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: illegal start of expression
+    public static void createDatabase()
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:46: error: ';' expected
+    public static void createDatabase()
+                                       ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: illegal start of expression
+    public void insertEvent(int topicId, String title, String content)
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: not a statement
+    public void insertEvent(int topicId, String title, String content)
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:61: error: ';' expected
+    public void insertEvent(int topicId, String title, String content)
+                                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: illegal start of expression
+    public ArrayList<Event> getAllEvents() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:77: error: ';' expected
+    public ArrayList<Event> getAllEvents() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: illegal start of expression
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:103: error: ';' expected
+    public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {
+                                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: illegal start of expression
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                   ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: not a statement
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                             ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:159: error: ';' expected
+    public ArrayList<Event> getAllEventsFromKeyword(String ipAddress, String keyword) {
+                                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: illegal start of expression
+    public void insertTopic(String name, String keywords) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: not a statement
+    public void insertTopic(String name, String keywords) {
+                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:232: error: ';' expected
+    public void insertTopic(String name, String keywords) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: illegal start of expression
+    public ArrayList<Topic> getAllTopics() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:248: error: ';' expected
+    public ArrayList<Topic> getAllTopics() {
+                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: illegal start of expression
+    public int getTopicId(String name) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:273: error: ';' expected
+    public int getTopicId(String name) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: illegal start of expression
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: <identifier> expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: not a statement
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:294: error: ';' expected
+    public ArrayList<Topic> getSubscriberTopics(int sub_id, boolean isSubscribed) {
+                                                                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: illegal start of expression
+    public int getSubscriberId(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                              ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:327: error: ';' expected
+    public int getSubscriberId(String ipaddress) {
+                                               ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: illegal start of expression
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: <identifier> expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                  ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: not a statement
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                        ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:349: error: ';' expected
+    public void insertSubscriber(String ipaddress, long lastactivedatetime) {
+                                                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: illegal start of expression
+    public void updateSubscriberLastActive(String ipaddress) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                          ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:367: error: ';' expected
+    public void updateSubscriberLastActive(String ipaddress) {
+                                                           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: illegal start of expression
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: <identifier> expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: not a statement
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:382: error: ';' expected
+    public void insertSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: illegal start of expression
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: <identifier> expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: not a statement
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                      ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:397: error: ';' expected
+    public void removeSubscriberTopic(int sub_id, int top_id) {
+                                                            ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: illegal start of expression
+    public static void createTables() {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:413: error: ';' expected
+    public static void createTables() {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+    ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: illegal start of expression
+    public static void main(String[] args) {
+           ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                 ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: '.class' expected
+    public static void main(String[] args) {
+                                     ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:466: error: ';' expected
+    public static void main(String[] args) {
+                                         ^
+./src/edu/rit/CSCI652/impl/DbConnection.java:510: error: reached end of file while parsing
+}
+ ^
+74 errors
+./create.sh: line 17: syntax error near unexpected token `then'
+./create.sh: line 17: `then'
