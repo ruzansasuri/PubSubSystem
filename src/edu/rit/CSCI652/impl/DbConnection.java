@@ -30,6 +30,7 @@ public class DbConnection {
         Logging.print("jdbc:sqlite:" + System.getProperty("user.dir"));
         Logging.print(databaseDir);
         databasePath = new File(databaseDir, "pubsub.db").toString();
+        Logging.print(databasePath);
         createDatabase();
         createTables();
 

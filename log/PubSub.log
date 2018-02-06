@@ -2408,3 +2408,185 @@ Removing intermediate container 79c5c7dd6970
  ---> ca12a89593cf
 Successfully built ca12a89593cf
 Successfully tagged pubsub_sub:latest
+Compiled..
+1efa845f4601
+8b0ba7ffb6c5
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...] [flags]
+
+Remove one or more containers
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...] [flags]
+
+Remove one or more images
+Untagged: pubsub_sub:latest
+Deleted: sha256:ca12a89593cf561dab754229b81b5d0ee8fa337abb57d7145fc84f8e260f9668
+Deleted: sha256:0ce1924e8a18ca4e72e18c95e78140aa14eab991bcc654bfa4cb48544f5852fa
+Deleted: sha256:d05bde0a377e15e0fb7232287bb06ad0d60dd6e539d44046fbdf9d4e92f61603
+Deleted: sha256:ab110c3c39410fa40086f469e499150efbc2336cf8cbc96f26eafb8272313a8c
+Deleted: sha256:f5a0045e10536992ef33eaaaf9cf7a3cba156daae6edf6a2a8b1949629cee447
+Deleted: sha256:8a5202ba2f3762b70d4f1d105647f1f0a157d00b9b370dfbce36990fd6590dbf
+Deleted: sha256:7af9321196fa18583f4427fdffc046399b9fbb9a23ca313cfd91aa1f7d175387
+Untagged: pubsub_em:latest
+Deleted: sha256:c654a4b4be8ca081ed21c704614b6d733d7be1329e393f4801cf0c5f14fff6fb
+Deleted: sha256:e278d75375a6591a34319cdf0bbbdf56dd1ddac7c72265008b99793ec2a99b0a
+Deleted: sha256:6764745baf4a8bc69a2b51e27854c980ff22b61809bb5fed2c0e4001c42b359f
+Deleted: sha256:b9184ffd3f4c3fb26e2165517fc2c05e60809cbe8ae5ce1946ff60af7fb03c64
+Deleted: sha256:4b15c4a364d92b4550112457635bc7ad3588b94d045bd13427b0e00c5a43e3c0
+Deleted: sha256:7f7ced98c6d4029ba85f8d1a1ec591c747b06546a1c5e23924f84ed6c98473d2
+Deleted: sha256:5c71dca7515391051466e58145bfee6c16120346b1985c4f3896922c8a9a33f4
+Deleted: sha256:4cdb21b53767736312e82a7aad0a35c4d3fe9e5d4214922a2627890030ecad38
+Sending build context to Docker daemon  14.59MB
+Step 1/8 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/8 : CMD mkdir project
+ ---> Running in 89b981197515
+Removing intermediate container 89b981197515
+ ---> 62a7e69f5fc3
+Step 3/8 : COPY . project
+ ---> ba2d5932c957
+Step 4/8 : ARG SYSTEM_TYPE
+ ---> Running in 7decad9e0ff5
+Removing intermediate container 7decad9e0ff5
+ ---> 084e20cdc7f0
+Step 5/8 : ENV SYSTEM_TYPE=${SYSTEM_TYPE}
+ ---> Running in ffa4bec8fc9e
+Removing intermediate container ffa4bec8fc9e
+ ---> b651289cffcf
+Step 6/8 : EXPOSE 8079
+ ---> Running in 92172da636d1
+Removing intermediate container 92172da636d1
+ ---> 4ea06b245ef8
+Step 7/8 : WORKDIR /project
+Removing intermediate container 1f66a777d659
+ ---> acc260d113bc
+Step 8/8 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar;" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in a7a41ef52d4d
+Removing intermediate container a7a41ef52d4d
+ ---> dc8967c31020
+Successfully built dc8967c31020
+Successfully tagged pubsub_em:latest
+Sending build context to Docker daemon  14.59MB
+Step 1/8 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/8 : CMD mkdir project
+ ---> Using cache
+ ---> 62a7e69f5fc3
+Step 3/8 : COPY . project
+ ---> b237eb4c31d0
+Step 4/8 : ARG SYSTEM_TYPE
+ ---> Running in 5adc152b7852
+Removing intermediate container 5adc152b7852
+ ---> 8258ca7ec98d
+Step 5/8 : ENV SYSTEM_TYPE=${SYSTEM_TYPE}
+ ---> Running in a231d93248f8
+Removing intermediate container a231d93248f8
+ ---> b43defd04f1c
+Step 6/8 : EXPOSE 8079
+ ---> Running in 0bed4d9fdb06
+Removing intermediate container 0bed4d9fdb06
+ ---> 7bd6c3090d70
+Step 7/8 : WORKDIR /project
+Removing intermediate container 7d70a940a8d6
+ ---> 2eee71c7db6f
+Step 8/8 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar;" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in b7128c8cd0a6
+Removing intermediate container b7128c8cd0a6
+ ---> 1935475bd43c
+Successfully built 1935475bd43c
+Successfully tagged pubsub_sub:latest
+Compiled..
+e61a70af149f
+accd96fdccfc
+"docker rm" requires at least 1 argument.
+See 'docker rm --help'.
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...] [flags]
+
+Remove one or more containers
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...] [flags]
+
+Remove one or more images
+Untagged: pubsub_sub:latest
+Deleted: sha256:1935475bd43c05d52a920446d9f522e1d04d1615a5f7365a58a021fd28edc0d3
+Deleted: sha256:2eee71c7db6f13f73114336a5b2a405e550411e9ec787c55b73ef3bd5f2a9db5
+Deleted: sha256:7bd6c3090d709a9730908a0249c3064c85b445a1949f6df91be5c21f2e6b3f1e
+Deleted: sha256:b43defd04f1c60d93d254154e3866f2a1066c74c889d9a97ea37f8f8aa9bd3b5
+Deleted: sha256:8258ca7ec98d263cf071d87dd1d1a6919c50accdf841e3f4daf96134920082a7
+Deleted: sha256:b237eb4c31d0a9a9a85e3143c2e2f1869b333e677866c108d7686594fe0ea844
+Deleted: sha256:1eccc4dda088a4c8d61c9622b7e02571bb71cef99a4d50d0c3a29c9048ac958f
+Untagged: pubsub_em:latest
+Deleted: sha256:dc8967c310206e2738194f7b33cc190a23ea54ee526357fd04008113410c0637
+Deleted: sha256:acc260d113bc14c267703b7d78f425090ef01a14580bcf6b23ab53d63cbcb327
+Deleted: sha256:4ea06b245ef8d4bf5fed9962ec929511459d79adfeb2fce9c2ef46bfa7ed6447
+Deleted: sha256:b651289cffcf5522f0f5a1dc51094ba157c6823141cf9c86a348039e7ef42a27
+Deleted: sha256:084e20cdc7f07e05967f6e5e7ed272d61a71c6d3892ce62886694b4dd1694ce3
+Deleted: sha256:ba2d5932c9570afa98e70e8e268c75da5b41e618a46c3e6d9d94b594d886d0cd
+Deleted: sha256:99871c04e0c97c69f1d1a664607024165eb2d34b8b54f95c24ef64f9594ac6fd
+Deleted: sha256:62a7e69f5fc31328652e5af7a3ad2dbb8901040680119c56a0399ba6f8b1485c
+Sending build context to Docker daemon  14.59MB
+Step 1/8 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/8 : CMD mkdir project
+ ---> Running in 995c8f8a382b
+Removing intermediate container 995c8f8a382b
+ ---> 0f4c7ab183ba
+Step 3/8 : COPY . project
+ ---> aa627ad562ea
+Step 4/8 : ARG SYSTEM_TYPE
+ ---> Running in 84607b8c4b60
+Removing intermediate container 84607b8c4b60
+ ---> 198c976c9a82
+Step 5/8 : ENV SYSTEM_TYPE=${SYSTEM_TYPE}
+ ---> Running in bc9d06d306db
+Removing intermediate container bc9d06d306db
+ ---> 7ce84acfcf2b
+Step 6/8 : EXPOSE 8079
+ ---> Running in 5bbcc14ac44b
+Removing intermediate container 5bbcc14ac44b
+ ---> d70331e94099
+Step 7/8 : WORKDIR /project
+Removing intermediate container 8e4b6f8f1be8
+ ---> 1bbb30ed5987
+Step 8/8 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar;" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in 4a1542dadaae
+Removing intermediate container 4a1542dadaae
+ ---> 0189e81947cd
+Successfully built 0189e81947cd
+Successfully tagged pubsub_em:latest
+Sending build context to Docker daemon  14.59MB
+Step 1/8 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/8 : CMD mkdir project
+ ---> Using cache
+ ---> 0f4c7ab183ba
+Step 3/8 : COPY . project
+ ---> f45477332d6a
+Step 4/8 : ARG SYSTEM_TYPE
+ ---> Running in 850b68eab83d
+Removing intermediate container 850b68eab83d
+ ---> 2aca54b33ba7
+Step 5/8 : ENV SYSTEM_TYPE=${SYSTEM_TYPE}
+ ---> Running in 02eff6a566f8
+Removing intermediate container 02eff6a566f8
+ ---> b445d9dc1eec
+Step 6/8 : EXPOSE 8079
+ ---> Running in c96eabe5bf04
+Removing intermediate container c96eabe5bf04
+ ---> 34edf6abe48d
+Step 7/8 : WORKDIR /project
+Removing intermediate container 38bc9f7e363f
+ ---> 843b33c19c4b
+Step 8/8 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar;" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in 886bbf690d92
+Removing intermediate container 886bbf690d92
+ ---> d55a9af2f60f
+Successfully built d55a9af2f60f
+Successfully tagged pubsub_sub:latest
