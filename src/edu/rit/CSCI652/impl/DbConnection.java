@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class DbConnection {
 
     static String databasePath;
-
     private static final DbConnection INSTANCE = new DbConnection();
 
 
@@ -23,17 +22,8 @@ public class DbConnection {
         return INSTANCE;
     }
 
-    public DbConnection() {
-	Clas.forName("org.sqlite.JDBC");
-    public DbConnection()
+    private DbConnection()
     {
-        try
-        {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
         String databaseDir = new File("jdbc:sqlite:" + System.getProperty("user.dir"), "database").toString();
         Logging.print("jdbc:sqlite:" + System.getProperty("user.dir"));
         Logging.print(databaseDir);
