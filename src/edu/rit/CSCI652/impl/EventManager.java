@@ -36,12 +36,13 @@ public class EventManager{
 
 						try {
 
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+
+						System.out.println(ip + " publish:requested topic");
 
 						break;
 					case Message.PUBLISH_SEND_EVENT:
@@ -56,7 +57,7 @@ public class EventManager{
 						for(Event ev:events)
 							System.out.println(ev);
 						*/
-						System.out.println("The content has been published");
+						System.out.println(ip + " publish:send event");
 
 						break;
 
@@ -64,13 +65,12 @@ public class EventManager{
 
 						Topic topic = recvdMessage.getTopic();
 
-						// TODO
 						DbConnection.getInstance().insertSubscriber(ip, 0);
 						DbConnection.getInstance().insertSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(ip),
 								topic.getId());
 
-						System.out.println(port + " has subscribed to " + topic.getName());
+						System.out.println(ip + " subscribe:selected " + topic.getName());
 
 						break;
 
@@ -81,17 +81,18 @@ public class EventManager{
 						sendMessage = new Message();
 						sendMessage.setType(Message.SUBSCRIBE_REQUEST_TOPICS);
 
-						//TODO
 						sendMessage.setTopicList(con.getSubscriberTopics(con.getSubscriberId(ip), false));
 
 						try {
 
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+
+						System.out.println(ip + " subscribe:requested topics");
 
 						break;
 
@@ -106,13 +107,15 @@ public class EventManager{
 						sendMessage.setEventList(eventsArrayList);
 
 						try {
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
 						DbConnection.getInstance().updateSubscriberLastActive(ip);
+
+						System.out.println(ip + " read events");
 
 						break;
 
@@ -127,45 +130,44 @@ public class EventManager{
 						sendMessage.setEventList(eventsList);
 
 						try {
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
 						DbConnection.getInstance().updateSubscriberLastActive(ip);
 
+						System.out.println(ip + " read events using keywords");
+
 						break;
 
 					case Message.UNSUB_SELECT_TOPIC:
 
 
-						// TODO
 						DbConnection.getInstance().removeSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(ip),
 								recvdMessage.getTopic().getId() );
 
-						System.out.println(port + " has unsubscribed from " + recvdMessage.getTopic().getName());
-
-
+						System.out.println(ip + " has unsubbed from " + recvdMessage.getTopic().getName());
 						break;
 
 					case Message.UNSUB_REQUEST_TOPICS:
 
-						//TODO
+
 						sendMessage = new Message();
 						sendMessage.setType(Message.UNSUB_REQUEST_TOPICS);
 						sendMessage.setTopicList(DbConnection.getInstance().getSubscriberTopics(DbConnection.getInstance().getSubscriberId(ip), true));
 
 						try {
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
 
-
+						System.out.println(ip + " unsub: requested topic");
 
 						break;
 
@@ -178,14 +180,14 @@ public class EventManager{
 						try 
 						{
 
-							// TODO
-							udpSystem.sendMessage(sendMessage, ip);
+							udpSystem.sendMessage(sendMessage, ip, port);
 
 						} 
 						catch (IOException e) {
 							e.printStackTrace();
 						}
-						System.out.println(port + " has added topic:" + recvdMessage.getTopic().getName());
+
+						System.out.println(ip + " advertise: requested topic");
 						break;
 				}
 			}

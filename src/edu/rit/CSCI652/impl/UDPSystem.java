@@ -38,24 +38,18 @@ public class UDPSystem {
     }
 
 
-    public void sendMessage(Message message, String iPAddress) throws IOException {
+    public void sendMessage(Message message, String iPAddress, int port) throws IOException {
 
         Gson gson = new Gson();
         String messageStr = gson.toJson(message);
         byte[] buf = messageStr.getBytes();
         InetAddress address = InetAddress.getByName(iPAddress);
 
-        DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 6789);
+        DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
         socket.send(packet);
-        Logging.print(messageStr);
+        Logging.print(iPAddress + ": message:" + messageStr);
     }
 
-    public void sendMessage(Message message, List<String> iPAddresses) throws IOException {
-        byte[] buf;
-        for (String address : iPAddresses) {
-            sendMessage(message, address);
-        }
-    }
 
     //For localhost
     public void sendMessageLocal(Message message, int port) throws IOException {
@@ -100,6 +94,7 @@ public class UDPSystem {
                         }
 
                         InetAddress address = receivePacket.getAddress();
+                        System.out.println(address.getHostAddress());
                         int port = receivePacket.getPort();
 
                         String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
