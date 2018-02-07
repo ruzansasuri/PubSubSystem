@@ -62,7 +62,7 @@ public class UDPSystem {
 
                             if (!gotReply) {
                                 timerI.timedOut();
-                                gotReply=true;
+                                gotReply = true;
                             }
                         }
                     },
@@ -71,7 +71,7 @@ public class UDPSystem {
         }
     }
 
-    public void sendMessage(Message message, String iPAddress, int port) throws IOException {
+    public void sendMessage(Message message, String iPAddress, int port, boolean timer) throws IOException {
 
         Gson gson = new Gson();
         String messageStr = gson.toJson(message);
@@ -84,7 +84,8 @@ public class UDPSystem {
         Logging.print(iPAddress + ": message:" + messageStr);
 
         gotReply = false;
-        startTimerTask();
+        if (timer)
+            startTimerTask();
     }
 
 
