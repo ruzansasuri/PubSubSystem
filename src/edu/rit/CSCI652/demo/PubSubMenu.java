@@ -53,7 +53,7 @@ public class PubSubMenu {
             showTopics(topicArrayList, topicInterface);
             return;
         }
-        if (choice <= topicArrayList.size())
+        if (choice > 0 && choice <= topicArrayList.size())
             topicInterface.selectedTopic(topicArrayList.get(choice - 1));
         else
             showTopics(topicArrayList, topicInterface);
@@ -86,6 +86,8 @@ public class PubSubMenu {
         System.out.print("Choose menu option : ");
         try {
             option = in.nextInt();
+
+
         } catch (Exception e) {
             showMenu();
             return;
