@@ -33,51 +33,66 @@ public class PubSubAgent {
                 Logging.print("Server port:" + port + ", Message Type:" + message.getType());
 
                 switch (message.getType()) {
-                    case Message.PUBLISH_REQUEST_TOPICS:
-                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-                            @Override
-                            public void selectedTopic(Topic topic) {
-                                Scanner in = new Scanner(System.in);
-                                System.out.print("Enter your title for the content:");
-                                String title = in.next();
-                                System.out.print("Enter your content:");
-                                String content = in.next();
 
-                                Event event = new Event(topic.getId(), title, content);
-                                Message sendMessage = new Message();
-                                sendMessage.setType(Message.PUBLISH_SEND_EVENT);
-                                sendMessage.setEvent(event);
-                                try {
-                                    //TODO
-                                    udpSystem.sendMessage(sendMessage, ip, port);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                    case Message.PUBLISH_REQUEST_TOPICS:
+
+                        if(message.getTopicList().size()==0){
+                            System.out.println("There are no topics in the server");
+                        }else {
+
+                            new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                                @Override
+                                public void selectedTopic(Topic topic) {
+                                    Scanner in = new Scanner(System.in);
+                                    System.out.print("Enter your title for the content:");
+                                    String title = in.next();
+                                    System.out.print("Enter your content:");
+                                    String content = in.next();
+
+                                    Event event = new Event(topic.getId(), title, content);
+                                    Message sendMessage = new Message();
+                                    sendMessage.setType(Message.PUBLISH_SEND_EVENT);
+                                    sendMessage.setEvent(event);
+                                    try {
+                                        //TODO
+                                        udpSystem.sendMessage(sendMessage, ip, port);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            }
-                        });
-                        pubSubMenu.showMenu();
+                            });
+                            pubSubMenu.showMenu();
+                        }
                         break;
 
                     case Message.SUBSCRIBE_REQUEST_TOPICS:
-                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-                            @Override
-                            public void selectedTopic(Topic topic) {
-                                Message sendMessage = new Message();
-                                sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
-                                sendMessage.setTopic(topic);
-                                try {
-                                    //TODO
-                                    udpSystem.sendMessage(sendMessage, ip, port);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
 
-                        pubSubMenu.showMenu();
+                        if(message.getTopicList().size()==0){
+                            System.out.println("There are no topics in the server");
+                        }else {
+
+                            new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                                @Override
+                                public void selectedTopic(Topic topic) {
+                                    Message sendMessage = new Message();
+                                    sendMessage.setType(Message.SUBSCRIBE_SELECTED_TOPIC);
+                                    sendMessage.setTopic(topic);
+                                    try {
+                                        //TODO
+                                        udpSystem.sendMessage(sendMessage, ip, port);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                            pubSubMenu.showMenu();
+                        }
                         break;
 
                     case Message.UNSUB_REQUEST_TOPICS:
+
+
                         new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
                             @Override
                             public void selectedTopic(Topic topic) {

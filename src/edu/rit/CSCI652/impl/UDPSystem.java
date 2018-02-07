@@ -30,7 +30,7 @@ public class UDPSystem {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        Logging.print("Connected.");
+        System.out.println("Connected.");
         receiving = false;
     }
 
@@ -40,7 +40,7 @@ public class UDPSystem {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        Logging.print("Connected.");
+        System.out.println("Connected.");
         receiving = false;
     }
 
@@ -101,7 +101,7 @@ public class UDPSystem {
                         }
 
                         InetAddress address = receivePacket.getAddress();
-                        System.out.println(address.getHostAddress());
+                        System.out.println("Got message from "  + address.getHostAddress());
                         int port = receivePacket.getPort();
 
                         String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
