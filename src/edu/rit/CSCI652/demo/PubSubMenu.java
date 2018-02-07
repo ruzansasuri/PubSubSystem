@@ -45,7 +45,14 @@ public class PubSubMenu {
 
         System.out.print("\nChoose a topic:");
         Scanner in = new Scanner(System.in);
-        int choice = in.nextInt();
+        int choice;
+
+        try {
+            choice = in.nextInt();
+        }catch (Exception e){
+            showTopics(topicArrayList, topicInterface);
+            return;
+        }
 
         topicInterface.selectedTopic(topicArrayList.get(choice-1));
     }
@@ -77,7 +84,8 @@ public class PubSubMenu {
             try {
                 option = in.nextInt();
             }catch (Exception e){
-
+                showMenu();
+                return;
             }
             switch (option) {
                 case 1:

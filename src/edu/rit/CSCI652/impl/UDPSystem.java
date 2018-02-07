@@ -54,7 +54,7 @@ public class UDPSystem {
     }
 
     public void startTimerTask() {
-        if (timerI != null) {
+        if (timerI != null && gotReply) {
             new java.util.Timer().schedule(
                     new java.util.TimerTask() {
                         @Override
@@ -64,7 +64,7 @@ public class UDPSystem {
                                 timerI.timedOut();
                         }
                     },
-                    5000
+                    10000
             );
         }
     }
