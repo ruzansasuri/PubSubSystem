@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author Thomas Binu
  * @author Ruzan Sasuri
  * @author Amol Gaikwad
- *
+ * <p>
  * PubSubAgent plays the role of publisher and subscriber
  */
 
@@ -36,9 +36,9 @@ public class PubSubAgent {
 
                     case Message.PUBLISH_REQUEST_TOPICS:
 
-                        if(message.getTopicList().size()==0){
+                        if (message.getTopicList().size() == 0) {
                             System.out.println("There are no topics in the server");
-                        }else {
+                        } else {
 
                             new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
                                 @Override
@@ -67,9 +67,9 @@ public class PubSubAgent {
 
                     case Message.SUBSCRIBE_REQUEST_TOPICS:
 
-                        if(message.getTopicList().size()==0){
+                        if (message.getTopicList().size() == 0) {
                             System.out.println("There are no topics in the server");
-                        }else {
+                        } else {
 
                             new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
                                 @Override
@@ -91,9 +91,9 @@ public class PubSubAgent {
 
                     case Message.UNSUB_REQUEST_TOPICS:
 
-                        if(message.getTopicList().size()==0){
+                        if (message.getTopicList().size() == 0) {
                             System.out.println("There are no topics in the server");
-                        }else {
+                        } else {
                             new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
                                 @Override
                                 public void selectedTopic(Topic topic) {
@@ -120,9 +120,9 @@ public class PubSubAgent {
                     case Message.READ_REQUEST_EVENTS:
 
                         ArrayList<Event> eventList = message.getEventList();
-                        if(eventList.size()==0){
-                           System.out.println("There are no events to display");
-                        }else {
+                        if (eventList.size() == 0) {
+                            System.out.println("There are no events to display");
+                        } else {
 
                             for (Event event : eventList) {
                                 System.out.println("Title: " + event.getTitle());
@@ -138,9 +138,9 @@ public class PubSubAgent {
 
                         ArrayList<Event> eventsListKey = message.getEventList();
 
-                        if(eventsListKey.size()==0) {
+                        if (eventsListKey.size() == 0) {
                             System.out.println("There are no events to display");
-                        }else{
+                        } else {
 
                             for (Event event : eventsListKey) {
                                 System.out.println("Title: " + event.getTitle());
@@ -165,7 +165,10 @@ public class PubSubAgent {
             @Override
             public void timedOut() {
 
-                    pubSubMenu.showMenu();
+                System.out.println("Server down");
+                System.exit(0);
+                //pubSubMenu.showMenu();
+
             }
         });
 
