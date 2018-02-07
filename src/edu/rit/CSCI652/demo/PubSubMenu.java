@@ -35,10 +35,10 @@ public class PubSubMenu {
         void selectedTopic(Topic topic);
     }
 
-    public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface){
+    public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface) {
 
-        int idx=1;
-        for(Topic topic:topicArrayList){
+        int idx = 1;
+        for (Topic topic : topicArrayList) {
             System.out.println(idx + ". " + topic.getName());
             idx++;
         }
@@ -49,12 +49,15 @@ public class PubSubMenu {
 
         try {
             choice = in.nextInt();
-        }catch (Exception e){
+        } catch (Exception e) {
             showTopics(topicArrayList, topicInterface);
             return;
         }
+        if (choice <= topicArrayList.size())
+            topicInterface.selectedTopic(topicArrayList.get(choice - 1));
+        else
+            showTopics(topicArrayList, topicInterface);
 
-        topicInterface.selectedTopic(topicArrayList.get(choice-1));
     }
 
 
@@ -80,44 +83,44 @@ public class PubSubMenu {
         int option = 0;
 
 
-            System.out.print("Choose menu option : ");
-            try {
-                option = in.nextInt();
-            }catch (Exception e){
-                showMenu();
+        System.out.print("Choose menu option : ");
+        try {
+            option = in.nextInt();
+        } catch (Exception e) {
+            showMenu();
+            return;
+        }
+        switch (option) {
+            case 1:
+                System.out.println("**** Starting publish ****\n");
+                pubSubMenuInterface.invokePublish();
                 return;
-            }
-            switch (option) {
-                case 1:
-                    System.out.println("**** Starting publish ****\n");
-                    pubSubMenuInterface.invokePublish();
-                    return;
-                case 2:
-                    System.out.println("**** Starting advertise ****\n");
-                    pubSubMenuInterface.invokeAdvertise();
-                    return;
-                case 3:
-                    System.out.println("**** Starting subscribe ****\n");
-                    pubSubMenuInterface.invokeSubscribe();
-                    return;
-                case 4:
-                    System.out.println("**** Starting read from topics ****\n");
-                    pubSubMenuInterface.invokeRead();
-                    return;
-                case 5:
-                    System.out.println("**** Starting read from keywords ****\n");
-                    pubSubMenuInterface.invokeReadFromKeyword();
-                    return;
-                case 6:
-                    System.out.println("**** Starting unsubscribe ****\n");
-                    pubSubMenuInterface.invokeUnsubscribe();
-                    return;
-                case 0:
-                    exit = true;
-                    return;
-                default:
-                    System.out.println("Invalid choice \n");
-            }
+            case 2:
+                System.out.println("**** Starting advertise ****\n");
+                pubSubMenuInterface.invokeAdvertise();
+                return;
+            case 3:
+                System.out.println("**** Starting subscribe ****\n");
+                pubSubMenuInterface.invokeSubscribe();
+                return;
+            case 4:
+                System.out.println("**** Starting read from topics ****\n");
+                pubSubMenuInterface.invokeRead();
+                return;
+            case 5:
+                System.out.println("**** Starting read from keywords ****\n");
+                pubSubMenuInterface.invokeReadFromKeyword();
+                return;
+            case 6:
+                System.out.println("**** Starting unsubscribe ****\n");
+                pubSubMenuInterface.invokeUnsubscribe();
+                return;
+            case 0:
+                exit = true;
+                return;
+            default:
+                System.out.println("Invalid choice \n");
+        }
 
 
         System.out.println("**** Exiting PubSub Menu ****\n");
