@@ -24,6 +24,10 @@ public class UDPSystem {
     private boolean running;
     private boolean receiving;
 
+    TimerI timerI;
+
+    private boolean gotReply=true;
+
     public UDPSystem() {
         try {
             socket = new DatagramSocket(6789);
@@ -45,6 +49,25 @@ public class UDPSystem {
     }
 
 
+    public void setTimerI(TimerI timerI) {
+        this.timerI = timerI;
+    }
+
+    public void startTimerTask(){
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+
+                        if(!gotReply)
+                            timerI.timedOut();
+                    }
+                },
+                5000
+        );
+    }
+
     public void sendMessage(Message message, String iPAddress, int port) throws IOException {
 
         Gson gson = new Gson();
@@ -54,7 +77,11 @@ public class UDPSystem {
 
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
         socket.send(packet);
+
         Logging.print(iPAddress + ": message:" + messageStr);
+
+        gotReply=false;
+        startTimerTask();
     }
 
 
@@ -71,6 +98,9 @@ public class UDPSystem {
         byte[] buf = messageStr.getBytes();
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
         socket.send(packet);
+
+        gotReply=false;
+        startTimerTask();
     }
 
     public void sendMessageLocal(Message message, List<Integer> ports) throws IOException {
@@ -99,6 +129,8 @@ public class UDPSystem {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
+                        gotReply=true;
 
                         InetAddress address = receivePacket.getAddress();
                         System.out.println("Got message from "  + address.getHostAddress());

@@ -208,10 +208,17 @@ public class DbConnection {
 
         String topicIds = "";
 
+        if(topicList.size()==0)
+            return eventList;
+
         for (Topic t : topicList) {
             topicIds += t.getId() + ",";
             Logging.print(t.getId());
         }
+
+
+
+
         topicIds = topicIds.substring(0, topicIds.length() - 1);
 
         sql = "SELECT * FROM event WHERE \n" +

@@ -61,8 +61,8 @@ public class PubSubAgent {
                                     }
                                 }
                             });
-                            pubSubMenu.showMenu();
                         }
+                        pubSubMenu.showMenu();
                         break;
 
                     case Message.SUBSCRIBE_REQUEST_TOPICS:
@@ -85,68 +85,87 @@ public class PubSubAgent {
                                     }
                                 }
                             });
-
-                            pubSubMenu.showMenu();
                         }
+                        pubSubMenu.showMenu();
                         break;
 
                     case Message.UNSUB_REQUEST_TOPICS:
 
+                        if(message.getTopicList().size()==0){
+                            System.out.println("There are no topics in the server");
+                        }else {
+                            new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
+                                @Override
+                                public void selectedTopic(Topic topic) {
 
-                        new PubSubMenu().showTopics(message.getTopicList(), new PubSubMenu.topicInterface() {
-                            @Override
-                            public void selectedTopic(Topic topic) {
+                                    Message sendMessage = new Message();
+                                    sendMessage.setType(Message.UNSUB_SELECT_TOPIC);
+                                    sendMessage.setTopic(topic);
+                                    try {
 
-                                Message sendMessage = new Message();
-                                sendMessage.setType(Message.UNSUB_SELECT_TOPIC);
-                                sendMessage.setTopic(topic);
-                                try {
-
-                                    //TODO
-                                    udpSystem.sendMessage(sendMessage, ip, port);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                                        //TODO
+                                        udpSystem.sendMessage(sendMessage, ip, port);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            }
-                        });
+                            });
 
+
+                        }
                         pubSubMenu.showMenu();
-
-
                         break;
 
 
                     case Message.READ_REQUEST_EVENTS:
 
                         ArrayList<Event> eventList = message.getEventList();
-                        for (Event event : eventList) {
-                            System.out.println("Title: " + event.getTitle());
-                            System.out.println("Content: " + event.getContent());
-                            System.out.println();
-                        }
+                        if(eventList.size()==0){
+                           System.out.println("There are no events to display");
+                        }else {
 
+                            for (Event event : eventList) {
+                                System.out.println("Title: " + event.getTitle());
+                                System.out.println("Content: " + event.getContent());
+                                System.out.println();
+                            }
+                        }
                         pubSubMenu.showMenu();
 
                         break;
 
                     case Message.READ_FROMKEYWORD_REQUEST_EVENTS:
 
-                        ArrayList<Event> eventsList = message.getEventList();
-                        for (Event event : eventsList) {
-                            System.out.println("Title: " + event.getTitle());
-                            System.out.println("Content: " + event.getContent());
-                            System.out.println();
-                        }
+                        ArrayList<Event> eventsListKey = message.getEventList();
 
+                        if(eventsListKey.size()==0) {
+                            System.out.println("There are no events to display");
+                        }else{
+
+                            for (Event event : eventsListKey) {
+                                System.out.println("Title: " + event.getTitle());
+                                System.out.println("Content: " + event.getContent());
+                                System.out.println();
+                            }
+                        }
                         pubSubMenu.showMenu();
 
                         break;
 
                     case Message.ADVERTISE_REQUEST_TOPICS:
+                        System.out.println("Topics have been advertised");
                         pubSubMenu.showMenu();
                         break;
                 }
 
+            }
+        });
+
+        udpSystem.setTimerI(new TimerI() {
+            @Override
+            public void timedOut() {
+
+                    pubSubMenu.showMenu();
             }
         });
 
@@ -160,7 +179,6 @@ public class PubSubAgent {
 
                 try {
 
-                    //TODO
                     udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
@@ -201,7 +219,6 @@ public class PubSubAgent {
 
                 try {
 
-                    //TODO
                     udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
@@ -216,7 +233,7 @@ public class PubSubAgent {
                 message.setType(Message.READ_REQUEST_EVENTS);
 
                 try {
-                    //TODO
+
                     udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -252,7 +269,6 @@ public class PubSubAgent {
 
                 try {
 
-                    //TODO
                     udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
