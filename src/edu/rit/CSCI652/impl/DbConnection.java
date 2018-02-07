@@ -11,7 +11,10 @@ import java.util.ArrayList;
 
 /**
  * @author Thomas Binu
+ * @author Ruzan Sasuri
  * @author Amol Gaikwad
+ *
+ * Utility class to handle database connections
  */
 public class DbConnection {
 

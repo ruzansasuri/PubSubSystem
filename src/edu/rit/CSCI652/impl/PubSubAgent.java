@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Thomas Binu
+ * @author Ruzan Sasuri
+ * @author Amol Gaikwad
+ *
+ * PubSubAgent plays the role of publisher and subscriber
+ */
 
 public class PubSubAgent {
 
@@ -127,7 +134,6 @@ public class PubSubAgent {
 
             }
         });
-
 
         pubSubMenu.setPubSubMenuInterface(new PubSubMenu.PubSubMenuInterface() {
 

@@ -11,7 +11,14 @@ import java.net.SocketException;
 import java.util.List;
 
 public class UDPSystem {
-//    static UDPSystem instance;
+
+    /**
+     * @author Thomas Binu
+     * @author Ruzan Sasuri
+     * @author Amol Gaikwad
+     *
+     * Handles UDP for both client and server
+     */
 
     private DatagramSocket socket;
     private boolean running;

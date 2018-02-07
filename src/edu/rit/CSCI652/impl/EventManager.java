@@ -9,10 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class EventManager{
-	
-	/*
-	 * Start the repo service
+
+	/**
+	 * @author Thomas Binu
+	 * @author Ruzan Sasuri
+	 * @author Amol Gaikwad
+	 *
+	 * Event manager class to handle subscribers and publishers
 	 */
+
 	private void startService() {
 
 		UDPSystem udpSystem= new UDPSystem(6789);

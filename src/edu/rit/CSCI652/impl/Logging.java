@@ -1,5 +1,13 @@
 package edu.rit.CSCI652.impl;
 
+/**
+ * @author Thomas Binu
+ * @author Ruzan Sasuri
+ * @author Amol Gaikwad
+ *
+ * Logging utility
+ */
+
 public class Logging {
 
     static boolean on=false;
