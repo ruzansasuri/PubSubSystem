@@ -74,7 +74,11 @@ public class PubSubMenu {
 
 
             System.out.print("Choose menu option : ");
-            option = in.nextInt();
+            try {
+                option = in.nextInt();
+            }catch (Exception e){
+
+            }
             switch (option) {
                 case 1:
                     System.out.println("**** Starting publish ****\n");

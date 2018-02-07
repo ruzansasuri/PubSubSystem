@@ -16,7 +16,7 @@ public class UDPSystem {
      * @author Thomas Binu
      * @author Ruzan Sasuri
      * @author Amol Gaikwad
-     *
+     * <p>
      * Handles UDP for both client and server
      */
 
@@ -26,7 +26,7 @@ public class UDPSystem {
 
     TimerI timerI;
 
-    private boolean gotReply=true;
+    private boolean gotReply = true;
 
     public UDPSystem() {
         try {
@@ -53,19 +53,20 @@ public class UDPSystem {
         this.timerI = timerI;
     }
 
-    public void startTimerTask(){
+    public void startTimerTask() {
+        if (timerI != null) {
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
 
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-
-                        if(!gotReply)
-                            timerI.timedOut();
-                    }
-                },
-                5000
-        );
+                            if (!gotReply)
+                                timerI.timedOut();
+                        }
+                    },
+                    5000
+            );
+        }
     }
 
     public void sendMessage(Message message, String iPAddress, int port) throws IOException {
@@ -80,7 +81,7 @@ public class UDPSystem {
 
         Logging.print(iPAddress + ": message:" + messageStr);
 
-        gotReply=false;
+        gotReply = false;
         startTimerTask();
     }
 
@@ -99,7 +100,7 @@ public class UDPSystem {
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, port);
         socket.send(packet);
 
-        gotReply=false;
+        gotReply = false;
         startTimerTask();
     }
 
@@ -130,10 +131,10 @@ public class UDPSystem {
                             e.printStackTrace();
                         }
 
-                        gotReply=true;
+                        gotReply = true;
 
                         InetAddress address = receivePacket.getAddress();
-                        System.out.println("Got message from "  + address.getHostAddress());
+                        System.out.println("Got message from " + address.getHostAddress());
                         int port = receivePacket.getPort();
 
                         String messageStr = new String(receivePacket.getData(), 0, receivePacket.getLength());
