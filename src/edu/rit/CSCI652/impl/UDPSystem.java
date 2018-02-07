@@ -60,8 +60,10 @@ public class UDPSystem {
                         @Override
                         public void run() {
 
-                            if (!gotReply)
+                            if (!gotReply) {
                                 timerI.timedOut();
+                                gotReply=true;
+                            }
                         }
                     },
                     10000
