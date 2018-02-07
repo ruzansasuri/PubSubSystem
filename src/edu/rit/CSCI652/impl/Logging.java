@@ -2,7 +2,7 @@ package edu.rit.CSCI652.impl;
 
 public class Logging {
 
-    static boolean on=true;
+    static boolean on=false;
 
     public static void print(String s){
 
