@@ -83,9 +83,11 @@ public class UDPSystem {
 
         Logging.print(iPAddress + ": message:" + messageStr);
 
-        gotReply = false;
-        if (timer)
+
+        if (timer) {
+            gotReply = false;
             startTimerTask();
+        }
     }
 
 
