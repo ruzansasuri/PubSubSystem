@@ -1,2 +1,3 @@
-gnome-terminal -e "docker run --rm -it pubsub_em"
-gnome-terminal -e "docker run --rm -it pubsub_sub"
+gnome-terminal -e "docker run --rm -it -e SYSTEM_TYPE=EventManager pubsub"
+gnome-terminal -e "docker run --rm -it -e SYSTEM_TYPE=PubSubAgent pubsub"
+#gnome-terminal -e "docker run --rm -it pubsub_sub"
