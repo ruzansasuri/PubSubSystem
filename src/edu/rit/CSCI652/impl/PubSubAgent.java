@@ -26,8 +26,8 @@ public class PubSubAgent {
 
         PubSubMenu pubSubMenu = new PubSubMenu();
 
-        UDPSystem udpSystem = new UDPSystem(clientPort);
-        udpSystem.getMessages(new ServerI() {
+        TCPSystem tcpSystem = new TCPSystem(clientPort);
+        tcpSystem.getMessages(new ServerI() {
             @Override
             public void success(Message message, String ip, int port) {
                 Logging.print("Server port:" + port + ", Message Type:" + message.getType());
@@ -55,7 +55,7 @@ public class PubSubAgent {
                                     sendMessage.setEvent(event);
                                     try {
                                         //TODO
-                                        udpSystem.sendMessage(sendMessage, ip, port, false);
+                                        tcpSystem.sendMessage(sendMessage, ip, port);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -79,7 +79,7 @@ public class PubSubAgent {
                                     sendMessage.setTopic(topic);
                                     try {
                                         //TODO
-                                        udpSystem.sendMessage(sendMessage, ip, port, false);
+                                        tcpSystem.sendMessage(sendMessage, ip, port);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -104,7 +104,7 @@ public class PubSubAgent {
                                     try {
 
                                         //TODO
-                                        udpSystem.sendMessage(sendMessage, ip, port, false);
+                                        tcpSystem.sendMessage(sendMessage, ip, port);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -161,16 +161,16 @@ public class PubSubAgent {
             }
         });
 
-        udpSystem.setTimerI(new TimerI() {
-            @Override
-            public void timedOut() {
-
-                System.out.println("Server down");
-                System.exit(0);
-                //pubSubMenu.showMenu();
-
-            }
-        });
+//        tcpSystem.setTimerI(new TimerI() {
+//            @Override
+//            public void timedOut() {
+//
+//                System.out.println("Server down");
+//                System.exit(0);
+//                //pubSubMenu.showMenu();
+//
+//            }
+//        });
 
         pubSubMenu.setPubSubMenuInterface(new PubSubMenu.PubSubMenuInterface() {
 
@@ -182,7 +182,7 @@ public class PubSubAgent {
 
                 try {
 
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -206,7 +206,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -222,7 +222,7 @@ public class PubSubAgent {
 
                 try {
 
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -237,7 +237,7 @@ public class PubSubAgent {
 
                 try {
 
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -256,7 +256,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -272,7 +272,7 @@ public class PubSubAgent {
 
                 try {
 
-                    udpSystem.sendMessage(message, SERVER_IP, SERVER_PORT, true);
+                    tcpSystem.sendMessage(message, SERVER_IP, SERVER_PORT);
 
                 } catch (IOException e) {
                     e.printStackTrace();

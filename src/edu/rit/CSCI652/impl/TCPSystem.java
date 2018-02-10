@@ -24,10 +24,8 @@ public class TCPSystem
 
     boolean close = false;
     int port;
+//    int sendingPort;
     ServerI serverI;
-//    HashMap<String, Socket> sockerMap = new HashMap<String, Socket>();
-//    HashMap<String, String> socketMap = new HashMap<>();
-
 
     public TCPSystem(int port)
     {
@@ -42,15 +40,6 @@ public class TCPSystem
         String messageStr = gson.toJson(message);
         sendToClient(messageStr, ipAddress, port);
     }
-
-//    public void sendMessageLocal(Message message, int port) throws IOException {
-//
-//
-//        System.out.println(port);
-//        Gson gson = new Gson();
-//        String messageStr = gson.toJson(message);
-//        sendToClient(messageStr, Integer.toString(port));
-//    }
 
 
     public void getMessages(ServerI serverI)
@@ -90,29 +79,19 @@ public class TCPSystem
                                     {
                                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(receiverSocket.getInputStream()));
                                         String messageStr = bufferedReader.readLine();
-                                        //todo
+
                                         receiverSocket.close();
-//                                        sockerMap.put(Integer.toString(recieverPort), receiverSocket);
+
                                         if (messageStr != null)
                                         {
-//                                            new Thread() {
-//                                                @Override
-//                                                public void run() {
                                             Gson gson = new Gson();
                                             Message message = gson.fromJson(messageStr, Message.class);
                                             serverI.success(message, recieverIp, recieverPort);
-//                                                }
-//                                            }.start();
-
                                         }
 
                                     } catch (IOException e)
                                     {
                                         e.printStackTrace();
-
-                                        //todo
-//                                        sockerMap.remove(recieverPort);
-
                                     }
                                 }
                             };
@@ -146,12 +125,10 @@ public class TCPSystem
         {
             InetAddress inetAddress = Inet4Address.getByName(ipAddress);
             System.out.println(ipAddress);
-            Socket receiverSocket = new Socket(ipAddress, port);//sockerMap.get(ipAddress);
+            Socket receiverSocket = new Socket(inetAddress, port);
             printWriter = new PrintWriter(receiverSocket.getOutputStream());
             printWriter.println(line);
             printWriter.flush();
-            //sockerMap.get(ipAddress).close();
-            //printWriter.close();
             receiverSocket.close();
 
         } catch (IOException e)
@@ -159,54 +136,6 @@ public class TCPSystem
             e.printStackTrace();
         }
     }
-
-
-//    public void connectToServer(String ip, int port, ServerI serverI)
-//    {
-//        InetAddress inetAddress;
-//        this.serverI = serverI;
-//
-//        try
-//        {
-//            if (ip.equals("localhost"))
-//                inetAddress = InetAddress.getLocalHost();
-//            else
-//                inetAddress = Inet4Address.getByName(ip);
-//
-//            System.out.println(port);
-//            Socket socket = new Socket(inetAddress, port);
-//
-//            if (socket.isConnected())
-//            {
-////                sockerMap.put(Integer.toString(port), socket);
-//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-////                new Thread() {
-////                    @Override
-////                    public void run() {
-////                        while (!close) {
-//                String messageStr = null;
-//                try
-//                {
-//                    messageStr = bufferedReader.readLine();
-//                    if (messageStr != null)
-//                    {
-//
-//                        Gson gson = new Gson();
-//                        Message message = gson.fromJson(messageStr, Message.class);
-//                        serverI.success(message, ip, port);
-//                    }
-//                } catch (IOException e)
-//                {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-////                }.start();
-//        } catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
 
 
 }

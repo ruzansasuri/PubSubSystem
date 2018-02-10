@@ -20,8 +20,8 @@ public class EventManager{
 
 	private void startService() {
 
-		UDPSystem udpSystem= new UDPSystem(6789);
-		udpSystem.getMessages(new ServerI() {
+		TCPSystem tcpSystem= new TCPSystem(6789);
+		tcpSystem.getMessages(new ServerI() {
 
 			@Override
 			public void success(Message recvdMessage, String ip, int port) {
@@ -41,7 +41,7 @@ public class EventManager{
 
 						try {
 
-							udpSystem.sendMessage(sendMessage, ip, port, false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -91,7 +91,7 @@ public class EventManager{
 						try {
 
 
-							udpSystem.sendMessage(sendMessage, ip, port, false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -113,7 +113,7 @@ public class EventManager{
 
 						try {
 
-							udpSystem.sendMessage(sendMessage, ip, port, false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -136,7 +136,7 @@ public class EventManager{
 
 						try {
 
-							udpSystem.sendMessage(sendMessage, ip, port, false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -166,7 +166,7 @@ public class EventManager{
 
 						try {
 
-							udpSystem.sendMessage(sendMessage, ip, port,false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -185,7 +185,7 @@ public class EventManager{
 						try 
 						{
 
-							udpSystem.sendMessage(sendMessage, ip, port,false);
+							tcpSystem.sendMessage(sendMessage, ip, port);
 
 						} 
 						catch (IOException e) {
