@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class EventManager{
 
+	public static final int EM_PORT = 6789;
+	public static final int SUB_PORT = 6790;
 	/**
 	 * @author Thomas Binu
 	 * @author Ruzan Sasuri
@@ -20,7 +22,7 @@ public class EventManager{
 
 	private void startService() {
 
-		TCPSystem tcpSystem= new TCPSystem(6789);
+		TCPSystem tcpSystem = new TCPSystem(EM_PORT);
 		tcpSystem.getMessages(new ServerI() {
 
 			@Override
@@ -41,7 +43,7 @@ public class EventManager{
 
 						try {
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip, EM_PORT);
 
 						} catch (IOException e) {
 							e.printStackTrace();

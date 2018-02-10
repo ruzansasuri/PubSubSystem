@@ -3,10 +3,7 @@ package edu.rit.CSCI652.impl;
 import com.google.gson.Gson;
 import edu.rit.CSCI652.demo.Message;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.*;
 import java.util.HashMap;
 import java.util.List;
@@ -74,7 +71,6 @@ public class TCPSystem
                                     int recieverPort = receiverSocket.getPort();
                                     Logging.print("receiver port:" + port);
 
-
                                     try
                                     {
                                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(receiverSocket.getInputStream()));
@@ -119,16 +115,17 @@ public class TCPSystem
 
     public void sendToClient(String line, String ipAddress, int port)
     {
-
-        PrintWriter printWriter;
+//        BufferedReader br;
+//        PrintWriter printWriter;
         try
         {
             InetAddress inetAddress = Inet4Address.getByName(ipAddress);
             System.out.println(ipAddress);
             Socket receiverSocket = new Socket(inetAddress, port);
-            printWriter = new PrintWriter(receiverSocket.getOutputStream());
-            printWriter.println(line);
-            printWriter.flush();
+//            br = new BufferedReader(receiverSocket.getOutputStream());
+            DataOutputStream dataOutputStream = new DataOutputStream(receiverSocket.getOutputStream());
+            dataOutputStream.writeBytes(line);
+//            printWriter.flush();
             receiverSocket.close();
 
         } catch (IOException e)
