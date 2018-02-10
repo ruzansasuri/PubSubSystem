@@ -90,7 +90,7 @@ public class TCPSystem
                                     {
                                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(receiverSocket.getInputStream()));
                                         String messageStr = bufferedReader.readLine();
-                                        //todo 
+                                        //todo
                                         receiverSocket.close();
 //                                        sockerMap.put(Integer.toString(recieverPort), receiverSocket);
                                         if (messageStr != null)
