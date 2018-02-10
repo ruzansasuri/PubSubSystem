@@ -150,7 +150,7 @@ public class UDPSystem {
 
                                 Gson gson = new Gson();
                                 Message message = gson.fromJson(messageStr, Message.class);
-                                serverI.success(message, address.getHostAddress(), port);
+                                serverI.success(message, address.getHostAddress());
                             }
                         }.start();
 
