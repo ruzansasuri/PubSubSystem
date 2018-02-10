@@ -69,21 +69,20 @@ public class TCPSystem
                                 {
 
                                     String recieverIp = receiverSocket.getInetAddress().getHostAddress();
-//                                    int recieverPort = receiverSocket.getPort();
-                                    Logging.print("receiver PORT:" + receivePort);
+
 
                                     try
                                     {
                                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(receiverSocket.getInputStream()));
                                         String messageStr = bufferedReader.readLine();
 
-                                        receiverSocket.close();
+                                        receiverSocket.close(); //Close connection after reading
 
                                         if (messageStr != null)
                                         {
                                             Gson gson = new Gson();
                                             Message message = gson.fromJson(messageStr, Message.class);
-                                            serverI.success(message, recieverIp);// , recieverPort);
+                                            serverI.success(message, recieverIp);
                                         }
 
                                     } catch (IOException e)
@@ -102,7 +101,7 @@ public class TCPSystem
                 {
                     System.out.println("I/O error: " + e);
                 }
-            } // run end
+            }
 
         }.start();
 
@@ -116,17 +115,14 @@ public class TCPSystem
 
     public void sendToClient(String line, String ipAddress, int port)
     {
-//        BufferedReader br;
-//        PrintWriter printWriter;
+
         try
         {
             InetAddress inetAddress = Inet4Address.getByName(ipAddress);
-            System.out.println(ipAddress);
+            System.out.println("Sending to:" + ipAddress);
             Socket receiverSocket = new Socket(inetAddress, port);
-//            br = new BufferedReader(receiverSocket.getOutputStream());
             DataOutputStream dataOutputStream = new DataOutputStream(receiverSocket.getOutputStream());
             dataOutputStream.writeBytes(line);
-//            printWriter.flush();
             receiverSocket.close();
 
         } catch (IOException e)
