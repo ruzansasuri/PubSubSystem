@@ -20,22 +20,23 @@ public class TCPSystem
 
 
     boolean close = false;
-    int port;
-//    int sendingPort;
+    public int sendPort;
+    public int receivePort;
     ServerI serverI;
 
-    public TCPSystem(int port)
+    public TCPSystem(int sendPort, int receivePort)
     {
-        this.port = port;
+        this.sendPort = sendPort;
+        this.receivePort = receivePort;
     }
 
 
-    public void sendMessage(Message message, String ipAddress, int port) throws IOException
+    public void sendMessage(Message message, String ipAddress) throws IOException
     {
 
         Gson gson = new Gson();
         String messageStr = gson.toJson(message);
-        sendToClient(messageStr, ipAddress, port);
+        sendToClient(messageStr, ipAddress, sendPort);
     }
 
 
@@ -52,7 +53,7 @@ public class TCPSystem
 
                 try
                 {
-                    ServerSocket serverSocket = new ServerSocket(port);
+                    ServerSocket serverSocket = new ServerSocket(receivePort);
                     System.out.println("Connected.");
                     while (!close)
                     {
@@ -68,8 +69,8 @@ public class TCPSystem
                                 {
 
                                     String recieverIp = receiverSocket.getInetAddress().getHostAddress();
-                                    int recieverPort = receiverSocket.getPort();
-                                    Logging.print("receiver port:" + port);
+//                                    int recieverPort = receiverSocket.getPort();
+                                    Logging.print("receiver PORT:" + receivePort);
 
                                     try
                                     {
@@ -82,7 +83,7 @@ public class TCPSystem
                                         {
                                             Gson gson = new Gson();
                                             Message message = gson.fromJson(messageStr, Message.class);
-                                            serverI.success(message, recieverIp, recieverPort);
+                                            serverI.success(message, recieverIp);// , recieverPort);
                                         }
 
                                     } catch (IOException e)

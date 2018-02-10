@@ -4,7 +4,6 @@ import edu.rit.CSCI652.demo.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,8 +17,8 @@ import java.util.Scanner;
 public class PubSubAgent {
 
     public static final String SERVER_IP = "172.17.0.2";
-    public static final int EM_PORT = 6789;
-    public static final int SUB_PORT = 6790;
+    public static final int SEND_PORT = 6789;
+    public static final int RECEIVE_PORT = 6790;
 
     public static void main(String[] args) {
         int clientPort = 9999; //DEFAULT PORT
@@ -27,11 +26,11 @@ public class PubSubAgent {
 
         PubSubMenu pubSubMenu = new PubSubMenu();
 
-        TCPSystem tcpSystem = new TCPSystem(SUB_PORT);
+        TCPSystem tcpSystem = new TCPSystem(SEND_PORT, RECEIVE_PORT);
         tcpSystem.getMessages(new ServerI() {
             @Override
-            public void success(Message message, String ip, int port) {
-                Logging.print("Server port:" + port + ", Message Type:" + message.getType());
+            public void success(Message message, String ip) {
+                Logging.print("Server PORT:" + SEND_PORT + ", Message Type:" + message.getType());
 
                 switch (message.getType()) {
 
@@ -56,7 +55,7 @@ public class PubSubAgent {
                                     sendMessage.setEvent(event);
                                     try {
                                         //TODO
-                                        tcpSystem.sendMessage(sendMessage, ip, port);
+                                        tcpSystem.sendMessage(sendMessage, ip);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -80,7 +79,7 @@ public class PubSubAgent {
                                     sendMessage.setTopic(topic);
                                     try {
                                         //TODO
-                                        tcpSystem.sendMessage(sendMessage, ip, port);
+                                        tcpSystem.sendMessage(sendMessage, ip);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -105,7 +104,7 @@ public class PubSubAgent {
                                     try {
 
                                         //TODO
-                                        tcpSystem.sendMessage(sendMessage, ip, port);
+                                        tcpSystem.sendMessage(sendMessage, ip);
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -183,7 +182,7 @@ public class PubSubAgent {
 
                 try {
 
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -207,7 +206,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -223,7 +222,7 @@ public class PubSubAgent {
 
                 try {
 
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -238,7 +237,7 @@ public class PubSubAgent {
 
                 try {
 
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -257,7 +256,7 @@ public class PubSubAgent {
                 try {
 
                     //TODO
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -273,7 +272,7 @@ public class PubSubAgent {
 
                 try {
 
-                    tcpSystem.sendMessage(message, SERVER_IP, EM_PORT);
+                    tcpSystem.sendMessage(message, SERVER_IP);
 
                 } catch (IOException e) {
                     e.printStackTrace();

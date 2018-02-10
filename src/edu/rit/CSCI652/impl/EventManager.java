@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class EventManager{
 
-	public static final int EM_PORT = 6789;
-	public static final int SUB_PORT = 6790;
+	public static final int SEND_PORT = 6790;
+	public static final int RECEIVE_PORT = 6789;
 	/**
 	 * @author Thomas Binu
 	 * @author Ruzan Sasuri
@@ -22,13 +22,13 @@ public class EventManager{
 
 	private void startService() {
 
-		TCPSystem tcpSystem = new TCPSystem(EM_PORT);
+		TCPSystem tcpSystem = new TCPSystem(SEND_PORT, RECEIVE_PORT);
 		tcpSystem.getMessages(new ServerI() {
 
 			@Override
-			public void success(Message recvdMessage, String ip, int port) {
+			public void success(Message recvdMessage, String ip) {
 
-				Logging.print("Sub port:" + port + ", type:" + recvdMessage.getType());
+				Logging.print("Sub PORT:" + SEND_PORT + ", type:" + recvdMessage.getType());
 
 				Message sendMessage = null;
 
@@ -43,7 +43,7 @@ public class EventManager{
 
 						try {
 
-							tcpSystem.sendMessage(sendMessage, ip, EM_PORT);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -93,7 +93,7 @@ public class EventManager{
 						try {
 
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -115,7 +115,7 @@ public class EventManager{
 
 						try {
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -138,7 +138,7 @@ public class EventManager{
 
 						try {
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -168,7 +168,7 @@ public class EventManager{
 
 						try {
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -187,7 +187,7 @@ public class EventManager{
 						try 
 						{
 
-							tcpSystem.sendMessage(sendMessage, ip, port);
+							tcpSystem.sendMessage(sendMessage, ip);
 
 						} 
 						catch (IOException e) {

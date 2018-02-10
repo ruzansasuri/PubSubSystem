@@ -4,6 +4,6 @@ import edu.rit.CSCI652.demo.Message;
 
 public interface ServerI
 {
-    void success(Message message, String ip, int port);
+    void success(Message message, String ip);
 
 }
