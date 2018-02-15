@@ -372,7 +372,8 @@ public class DbConnection {
 
         */
         int time = (int)System.currentTimeMillis();
-        String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime) VALUES('" + ipaddress + "' ," + time+ ")";
+        String insertSubscriberSql = "INSERT OR IGNORE INTO subscriber(ipaddress, lastactivedatetime) VALUES('" + ipaddress + "' ," + time+ ")";
+//        String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime) SELECT '" + ipaddress + "' ," + time+ " WHERE NOT EXIST";
         System.out.println(insertSubscriberSql);
         try (Connection conn = DriverManager.getConnection(databasePath);
              Statement stmt = conn.createStatement()) {
@@ -454,7 +455,7 @@ public class DbConnection {
 
         String subscriberSql = "CREATE TABLE IF NOT EXISTS subscriber (\n"
                 + "	id integer PRIMARY KEY,\n"
-                + "	ipaddress text NOT NULL,\n"
+                + "	ipaddress text NOT NULL UNIQUE,\n"
                 + "	lastactivedatetime integer NOT NULL"
                 + ");";
 
