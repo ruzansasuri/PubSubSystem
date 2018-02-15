@@ -7,7 +7,7 @@ if [ $? -eq 0 ] # If the previous command exited with 0 ie no error
 then
 	echo Compiled..
 	docker stop $(docker ps -aq)
-	docker system prune -fa
+	docker system prune -f
 	docker image rm pubsub #_sub
 
 	docker image build -t pubsub .

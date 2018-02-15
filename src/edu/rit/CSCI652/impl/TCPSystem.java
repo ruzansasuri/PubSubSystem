@@ -5,8 +5,6 @@ import edu.rit.CSCI652.demo.Message;
 
 import java.io.*;
 import java.net.*;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author Thomas Binu
@@ -39,12 +37,13 @@ public class TCPSystem
         sendToClient(messageStr, ipAddress, sendPort);
     }
 
-
-    public void getMessages(ServerI serverI)
-    {
-
+    public void setTCPInterface(ServerI serverI){
         this.serverI = serverI;
+    }
 
+
+    public void startMessageServer()
+    {
         new Thread()
         {
             @Override
@@ -82,7 +81,7 @@ public class TCPSystem
                                         {
                                             Gson gson = new Gson();
                                             Message message = gson.fromJson(messageStr, Message.class);
-                                            serverI.success(message, recieverIp);
+                                            serverI.gotMessage(message, recieverIp);
                                         }
 
                                     } catch (IOException e)

@@ -23,10 +23,11 @@ public class EventManager{
 	private void startService() {
 
 		TCPSystem tcpSystem = new TCPSystem(SEND_PORT, RECEIVE_PORT);
-		tcpSystem.getMessages(new ServerI() {
+
+		tcpSystem.setTCPInterface(new ServerI() {
 
 			@Override
-			public void success(Message recvdMessage, String ip) {
+			public void gotMessage(Message recvdMessage, String ip) {
 
 				Logging.print("Sub PORT:" + SEND_PORT + ", type:" + recvdMessage.getType());
 
@@ -72,7 +73,7 @@ public class EventManager{
 
 						Topic topic = recvdMessage.getTopic();
 
-						DbConnection.getInstance().insertSubscriber(ip, 0);
+						DbConnection.getInstance().insertSubscriber(ip);
 						DbConnection.getInstance().insertSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(ip),
 								topic.getId());
@@ -198,7 +199,25 @@ public class EventManager{
 						break;
 				}
 			}
+
+			@Override
+			public void failure() {
+
+			}
+
+			@Override
+			public void sentMessageSuccess() {
+
+			}
+
+			@Override
+			public void sendMessageFailed() {
+
+			}
 		});
+
+
+		tcpSystem.startMessageServer();
 	}
 
 	public static void main(String[] args)

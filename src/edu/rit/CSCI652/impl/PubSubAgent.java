@@ -27,9 +27,10 @@ public class PubSubAgent {
         PubSubMenu pubSubMenu = new PubSubMenu();
 
         TCPSystem tcpSystem = new TCPSystem(SEND_PORT, RECEIVE_PORT);
-        tcpSystem.getMessages(new ServerI() {
+        tcpSystem.setTCPInterface(new ServerI() {
+
             @Override
-            public void success(Message message, String ip) {
+            public void gotMessage(Message message, String ip) {
                 Logging.print("Server PORT:" + SEND_PORT + ", Message Type:" + message.getType());
 
                 switch (message.getType()) {
@@ -159,18 +160,25 @@ public class PubSubAgent {
                 }
 
             }
+
+            @Override
+            public void failure() {
+
+            }
+
+            @Override
+            public void sentMessageSuccess() {
+
+            }
+
+            @Override
+            public void sendMessageFailed() {
+
+            }
         });
 
-//        tcpSystem.setTimerI(new TimerI() {
-//            @Override
-//            public void timedOut() {
-//
-//                System.out.println("Server down");
-//                System.exit(0);
-//                //pubSubMenu.showMenu();
-//
-//            }
-//        });
+        tcpSystem.startMessageServer();
+
 
         pubSubMenu.setPubSubMenuInterface(new PubSubMenu.PubSubMenuInterface() {
 

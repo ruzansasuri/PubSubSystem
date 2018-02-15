@@ -4,6 +4,14 @@ import edu.rit.CSCI652.demo.Message;
 
 public interface ServerI
 {
-    void success(Message message, String ip);
+    void gotMessage(Message message, String ip);
+
+    void failure();
+
+    void sentMessageSuccess();
+
+    void sendMessageFailed();
+
+
 
 }
