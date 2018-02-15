@@ -371,7 +371,6 @@ public class DbConnection {
 
 
         */
-
         int time = (int)System.currentTimeMillis();
         String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime) VALUES('" + ipaddress + "' ," + time+ ")";
         System.out.println(insertSubscriberSql);
