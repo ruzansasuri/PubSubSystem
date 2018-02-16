@@ -23,6 +23,7 @@ public class Message
     public static final int ADVERTISE_REQUEST_TOPICS = 7;
     public static final int UNSUB_REQUEST_TOPICS = 8;
     public static final int UNSUB_SELECT_TOPIC = 9;
+    public static final int NOTIFICATION_EVENT = 10;
 
 
 

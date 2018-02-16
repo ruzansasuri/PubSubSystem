@@ -1,5 +1,6 @@
 package edu.rit.CSCI652.impl;
 
+import edu.rit.CSCI652.demo.Subscriber;
 import org.sqlite.JDBC;
 
 import edu.rit.CSCI652.demo.Event;
@@ -39,6 +40,7 @@ public class DbConnection {
 
     }
 
+
     public static void createDatabase()
     {
         try (Connection conn = DriverManager.getConnection(databasePath)){// "jdbc:sqlite::memory:")) {
@@ -58,6 +60,32 @@ public class DbConnection {
             System.out.println(e.getMessage());
 	    e.printStackTrace();
         }
+    }
+
+
+
+    public ArrayList<Integer> getAllSubscribersForTopic(int topicId){
+
+
+        String sql = "SELECT *  FROM subscriber_topic WHERE topic_id=" + topicId;
+        ArrayList<Integer> subscriberList = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs.next()) {
+
+                int subscriberId = rs.getInt("subscriber_id");
+                subscriberList.add(subscriberId);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return subscriberList;
     }
 
     public void insertEvent(int topicId, String title, String content)
@@ -99,7 +127,82 @@ public class DbConnection {
             System.out.println(e.getMessage());
         }
 
+
+
         return eventList;
+    }
+
+    public String getIpAddressOfSubscriber(int subId){
+
+
+        String sql = "SELECT * FROM subscriber WHERE " +
+                "id = " + subId + ";";
+
+        ArrayList<Event> eventList = new ArrayList<>();
+        String ip = "";
+
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            ip = rs.getString("ipaddress");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return ip;
+    }
+
+    public ArrayList<Event> getAllEventForSubscriber(int subId, int topicId){
+
+
+        Logging.print("Getting events for  subscribers with id:"+ subId);
+
+        String sql = "SELECT * FROM subscriber WHERE " +
+                "id = " + subId + ";";
+
+        ArrayList<Event> eventList = new ArrayList<>();
+        int sublastactive = 0;
+
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+             sublastactive = rs.getInt("lastactivedatetime");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sql = "SELECT * FROM event WHERE \n" +
+                "topic_id IN (" + topicId + ") AND publishdatetime >= '" + sublastactive + "';";
+
+
+        Logging.print(sublastactive);
+
+        try (Connection conn2 = DriverManager.getConnection(databasePath);
+             Statement stmt2 = conn2.createStatement();
+             ResultSet rs2 = stmt2.executeQuery(sql)) {
+
+            // loop through the result set
+            while (rs2.next()) {
+                int id = rs2.getInt("id");
+                int topicId2 = rs2.getInt("topic_id");
+                String title = rs2.getString("title");
+                String content = rs2.getString("content");
+                int publishDateTime = rs2.getInt("publishdatetime");
+                eventList.add(new Event(topicId2, title, content));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return eventList;
+
+
     }
 
     public ArrayList<Event> getAllEventsForSubscriber(String ipAddress) {

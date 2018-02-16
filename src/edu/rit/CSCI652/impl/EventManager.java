@@ -4,8 +4,10 @@ package edu.rit.CSCI652.impl;
 import edu.rit.CSCI652.demo.Event;
 import edu.rit.CSCI652.demo.Message;
 import edu.rit.CSCI652.demo.Topic;
+import org.sqlite.core.DB;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EventManager{
@@ -65,6 +67,9 @@ public class EventManager{
 						for(Event ev:events)
 							System.out.println(ev);
 						*/
+
+						updateAllSubscribers(event.getTopicId(), tcpSystem);
+
 						System.out.println(ip + " publish:send event");
 
 						break;
@@ -218,6 +223,30 @@ public class EventManager{
 
 
 		tcpSystem.startMessageServer();
+	}
+
+	//TODO CHECK RUZAN
+	public void updateAllSubscribers(int topicId, TCPSystem tcpSystem){
+
+		ArrayList<Integer> subscriberId = DbConnection.getInstance().getAllSubscribersForTopic(topicId);
+		for(Integer id:subscriberId){
+			String ipAddress = DbConnection.getInstance().getIpAddressOfSubscriber(id);
+			ArrayList<Event> eventsList = DbConnection.getInstance().getAllEventsForSubscriber(ipAddress);
+
+			Message sendMessage = new Message();
+			sendMessage.setType(Message.NOTIFICATION_EVENT);
+			sendMessage.setEventList(eventsList);
+			try {
+				tcpSystem.sendMessage(sendMessage ,ipAddress);
+				DbConnection.getInstance().updateSubscriberLastActive(ipAddress);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("Subscriber offline:" + ipAddress);
+			}
+
+		}
+
 	}
 
 	public static void main(String[] args)

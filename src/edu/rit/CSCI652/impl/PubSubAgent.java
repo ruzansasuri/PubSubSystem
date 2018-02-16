@@ -35,6 +35,26 @@ public class PubSubAgent {
 
                 switch (message.getType()) {
 
+
+                    case Message.NOTIFICATION_EVENT:
+
+
+                        //TODO RUZAN
+                        ArrayList<Event> eventList1 = message.getEventList();
+                        if (eventList1.size() == 0) {
+                            System.out.println("There are no events to display");
+                        } else {
+
+                            for (Event event : eventList1) {
+                                System.out.println("Title: " + event.getTitle());
+                                System.out.println("Content: " + event.getContent());
+                                System.out.println();
+                            }
+                        }
+                        //pubSubMenu.showMenu();
+
+                        break;
+
                     case Message.PUBLISH_REQUEST_TOPICS:
 
                         if (message.getTopicList().size() == 0) {
@@ -125,7 +145,7 @@ public class PubSubAgent {
                             System.out.println("There are no events to display");
                         } else {
 
-                            for (Event event : eventList) {
+                            for (Event event : message.getEventList()) {
                                 System.out.println("Title: " + event.getTitle());
                                 System.out.println("Content: " + event.getContent());
                                 System.out.println();
