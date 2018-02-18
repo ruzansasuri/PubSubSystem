@@ -16,7 +16,8 @@ import java.util.Scanner;
 
 public class PubSubAgent {
 
-    public static final String SERVER_IP = "172.17.0.2";
+//    public static final String SERVER_IP = "172.17.0.2";
+    public static final String SERVER_IP = "localhost";
     public static final int SEND_PORT = 6789;
     public static final int RECEIVE_PORT = 6790;
 
@@ -37,10 +38,9 @@ public class PubSubAgent {
 
 
                     case Message.NOTIFICATION_EVENT:
-
-
                         //TODO RUZAN
                         ArrayList<Event> eventList1 = message.getEventList();
+                        System.out.println();
                         if (eventList1.size() == 0) {
                             System.out.println("There are no events to display");
                         } else {

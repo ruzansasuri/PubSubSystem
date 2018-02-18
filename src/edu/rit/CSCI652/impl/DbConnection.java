@@ -248,7 +248,7 @@ public class DbConnection {
         topicIds = topicIds.substring(0, topicIds.length() - 1);
 
         sql = "SELECT * FROM event WHERE \n" +
-                "topic_id IN (" + topicIds + ") AND publishdatetime >= '" + sublastactive + "';";
+                "topic_id IN (" + topicIds + ") AND publishdatetime > '" + sublastactive + "';";
 
         try (Connection conn2 = DriverManager.getConnection(databasePath);
              Statement stmt2 = conn2.createStatement();
