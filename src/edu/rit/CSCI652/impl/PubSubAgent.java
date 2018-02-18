@@ -222,10 +222,10 @@ public class PubSubAgent {
 
                 Scanner in = new Scanner(System.in);
                 System.out.print("Enter your topic to advertise:");
-                String topicName = in.next();
+                String topicName = in.nextLine();
 
                 System.out.print("Enter your keywords:");
-                String keywords = in.next();
+                String keywords = in.nextLine();
 
                 Message message = new Message();
                 message.setTopic(new Topic(0, topicName, keywords));
