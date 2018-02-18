@@ -66,9 +66,9 @@ public class PubSubAgent {
                                 public void selectedTopic(Topic topic) {
                                     Scanner in = new Scanner(System.in);
                                     System.out.print("Enter your title for the content:");
-                                    String title = in.next();
+                                    String title = in.nextLine();
                                     System.out.print("Enter your content:");
-                                    String content = in.next();
+                                    String content = in.nextLine();
 
                                     Event event = new Event(topic.getId(), title, content);
                                     Message sendMessage = new Message();
