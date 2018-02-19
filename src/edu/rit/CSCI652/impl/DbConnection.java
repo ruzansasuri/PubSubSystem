@@ -588,7 +588,7 @@ public class DbConnection {
 
         String subscriberSql = "CREATE TABLE IF NOT EXISTS subscriber (\n"
                 + "	id integer PRIMARY KEY,\n"
-                + "	name text NOT NULL UNIQUE,\n"
+                + "	username text NOT NULL UNIQUE,\n"
                 + "	ipaddress text NOT NULL UNIQUE,\n"
                 + "	lastactivedatetime integer NOT NULL"
                 + ");";
