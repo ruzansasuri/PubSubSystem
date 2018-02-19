@@ -53,7 +53,7 @@ public class TCPSystem
                 try
                 {
                     ServerSocket serverSocket = new ServerSocket(receivePort);
-                    System.out.println("Connected.");
+//                    System.out.println("Connected.");
                     while (!close)
                     {
                         Socket receiverSocket = serverSocket.accept();
