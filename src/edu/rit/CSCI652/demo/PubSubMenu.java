@@ -35,6 +35,10 @@ public class PubSubMenu {
         void selectedTopic(Topic topic);
     }
 
+    public PubSubMenu() {
+
+    }
+
     public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface) {
 
         int idx = 1;
@@ -65,6 +69,10 @@ public class PubSubMenu {
         this.pubSubMenuInterface = pubSubMenuInterface;
     }
 
+    public void startAgent() {
+        pubSubMenuInterface.invokeRead();
+    }
+
     public void showMenu() {
 
         System.out.println("\n***** PubSub Menu *****");
@@ -81,7 +89,6 @@ public class PubSubMenu {
 
         boolean exit = false;
         int option = 0;
-
 
         System.out.print("Choose menu option : ");
         try {

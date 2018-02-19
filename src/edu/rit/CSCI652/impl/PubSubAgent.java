@@ -24,7 +24,6 @@ public class PubSubAgent {
     public static void main(String[] args) {
         int clientPort = 9999; //DEFAULT PORT
 
-
         PubSubMenu pubSubMenu = new PubSubMenu();
 
         TCPSystem tcpSystem = new TCPSystem(SEND_PORT, RECEIVE_PORT);
@@ -309,7 +308,7 @@ public class PubSubAgent {
 
             }
         });
-
+        pubSubMenu.startAgent();
         pubSubMenu.showMenu();
     }
 
