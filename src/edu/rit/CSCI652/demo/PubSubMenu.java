@@ -1,5 +1,6 @@
 package edu.rit.CSCI652.demo;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,6 +67,7 @@ public class PubSubMenu {
     }
 
     public void showMenu() {
+        Scanner in = new Scanner(System.in);
 
         System.out.println("\n***** PubSub Menu *****");
 
@@ -76,7 +78,6 @@ public class PubSubMenu {
         System.out.println("5. Read from keywords");
         System.out.println("6. Unsubscribe");
         System.out.println("0. Exit\n");
-
 
         boolean exit = false;
         int option = 0;
