@@ -15,7 +15,7 @@ then
 	echo Starting DB..
 	echo Taking a coffee break..
 	echo Ready!
-	run.sh >> $LOGFILE 2>&1
+	./run.sh >> $LOGFILE 2>&1
 else
 	echo Image Creation Failed
 fi
