@@ -14,17 +14,13 @@ public class PubSubMenu {
 
         void invokePublish();
 
-
         void invokeAdvertise();
 
-
         void invokeSubscribe();
-
 
         void invokeRead();
 
         void invokeReadFromKeyword();
-
 
         void invokeUnsubscribe();
 
@@ -33,10 +29,6 @@ public class PubSubMenu {
     public interface topicInterface {
 
         void selectedTopic(Topic topic);
-    }
-
-    public PubSubMenu() {
-
     }
 
     public void showTopics(ArrayList<Topic> topicArrayList, topicInterface topicInterface) {
@@ -76,7 +68,6 @@ public class PubSubMenu {
     public void showMenu() {
 
         System.out.println("\n***** PubSub Menu *****");
-        Scanner in = new Scanner(System.in);
 
         System.out.println("1. Publish");
         System.out.println("2. Advertise");

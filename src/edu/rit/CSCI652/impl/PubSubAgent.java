@@ -21,6 +21,17 @@ public class PubSubAgent {
     public static final int SEND_PORT = 6789;
     public static final int RECEIVE_PORT = 6790;
 
+    public static void authenticate(TCPSystem tcpSystem, String username) {
+        Message message = new Message();
+        message.setType(Message.USER_AUTHENTICATION);
+
+        try {
+            tcpSystem.sendMessage(message, SERVER_IP);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         int clientPort = 9999; //DEFAULT PORT
 
@@ -308,8 +319,13 @@ public class PubSubAgent {
 
             }
         });
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Please enter your username: ");
+        String username = in.nextLine();
+        authenticate(tcpSystem, username);
+
         pubSubMenu.startAgent();
-        pubSubMenu.showMenu();
     }
 
 

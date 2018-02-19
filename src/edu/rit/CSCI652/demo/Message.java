@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Message
 {
+    private String username;
     private int type;
     private ArrayList<Topic> topicList;
     private ArrayList<Event> eventList;
@@ -14,6 +15,7 @@ public class Message
     private Event event;
     private Topic topic;
 
+    public static final int USER_AUTHENTICATION = 0;
     public static final int PUBLISH_REQUEST_TOPICS = 1;
     public static final int PUBLISH_SEND_EVENT = 2;
     public static final int SUBSCRIBE_REQUEST_TOPICS = 3;
@@ -25,10 +27,7 @@ public class Message
     public static final int UNSUB_SELECT_TOPIC = 9;
     public static final int NOTIFICATION_EVENT = 10;
 
-
-
-
-    public Message(){
+    public Message() {
 
     }
 
@@ -38,6 +37,16 @@ public class Message
         this.topicList = topicList;
         this.eventList = eventList;
         this.subscriber = subscriber;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername(String username)
+    {
+        this.username = username;
     }
 
     public int getType()

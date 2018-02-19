@@ -62,8 +62,6 @@ public class DbConnection {
         }
     }
 
-
-
     public ArrayList<Integer> getAllSubscribersForTopic(int topicId){
 
 
@@ -467,15 +465,47 @@ public class DbConnection {
         return subId;
     }
 
-    public void insertSubscriber(String ipaddress) {
-        /*
-        String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime)\n" +
-                "VALUES('" + ipaddress + "', '" + lastactivedatetime + "');";
+    public void insertOrUpdate(String username, String ipaddress) {
+        String sql = "SELECT id FROM subscriber WHERE \n" +
+                "username = '" + username + "';";
+        int subId = -1;
 
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            if ( ! rs.isBeforeFirst()) {
+                insertSubscriber(username, ipaddress);
+            }
+            else {
+                updateSubscriber(username, ipaddress);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        if (subId == -1) {
 
-        */
+        }
+    }
+
+    public void updateSubscriber(String username, String ipaddress) {
+        String updateSubscriberSql = "UPDATE subscriber\n"+
+                "SET ipaddress ='"+ ipaddress +"' WHERE username ='" + username + "'";
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement()) {
+
+            stmt.execute(updateSubscriberSql);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertSubscriber(String username, String ipaddress) {
         int time = (int)System.currentTimeMillis();
-        String insertSubscriberSql = "INSERT OR IGNORE INTO subscriber(ipaddress, lastactivedatetime) VALUES('" + ipaddress + "' ," + time+ ")";
+
+        String insertSubscriberSql = "INSERT OR IGNORE INTO subscriber(username, ipaddress, lastactivedatetime) VALUES('" + username + "' , '" + ipaddress + "' ," + time+ ")";
 //        String insertSubscriberSql = "INSERT INTO subscriber(ipaddress, lastactivedatetime) SELECT '" + ipaddress + "' ," + time+ " WHERE NOT EXIST";
         System.out.println(insertSubscriberSql);
         try (Connection conn = DriverManager.getConnection(databasePath);
@@ -558,6 +588,7 @@ public class DbConnection {
 
         String subscriberSql = "CREATE TABLE IF NOT EXISTS subscriber (\n"
                 + "	id integer PRIMARY KEY,\n"
+                + "	name text NOT NULL UNIQUE,\n"
                 + "	ipaddress text NOT NULL UNIQUE,\n"
                 + "	lastactivedatetime integer NOT NULL"
                 + ");";
@@ -606,8 +637,8 @@ public class DbConnection {
         conn.insertEvent(conn.getTopicId("a"), "Business", "Biz Journal");
         conn.insertEvent(conn.getTopicId("b"), "Sports", "Basketball");
 
-        conn.insertSubscriber("10.10.256.1");
-        conn.insertSubscriber("10.10.256.2");
+        conn.insertSubscriber("Me", "10.10.256.1");
+        conn.insertSubscriber("Someone else", "10.10.256.2");
         System.out.println(conn.getSubscriberId("10.10.256.1"));
         System.out.println(conn.getTopicId("a"));
         conn.insertSubscriberTopic(conn.getSubscriberId("10.10.256.1"), conn.getTopicId("a"));

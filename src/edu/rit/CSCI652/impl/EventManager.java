@@ -37,6 +37,18 @@ public class EventManager{
 
 				switch (recvdMessage.getType()){
 
+					case Message.USER_AUTHENTICATION:
+
+						String username = recvdMessage.getUsername();
+						//come back
+						DbConnection.getInstance().updateSubscriber(username, ip);
+//						DbConnection.getInstance().insertSubscriberTopic(
+//								DbConnection.getInstance().insertOrUpdate();
+
+//						System.out.println(ip + " subscribe:selected " + topic.getName());
+
+						break;
+
 					case Message.PUBLISH_REQUEST_TOPICS:
 
 						sendMessage = new Message();
@@ -78,7 +90,7 @@ public class EventManager{
 
 						Topic topic = recvdMessage.getTopic();
 
-						DbConnection.getInstance().insertSubscriber(ip);
+//						DbConnection.getInstance().insertSubscriber(ip);
 						DbConnection.getInstance().insertSubscriberTopic(
 								DbConnection.getInstance().getSubscriberId(ip),
 								topic.getId());
