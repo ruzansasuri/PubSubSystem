@@ -41,7 +41,7 @@ public class EventManager{
 
 						String username = recvdMessage.getUsername();
 						//come back
-						DbConnection.getInstance().updateSubscriber(username, ip);
+						DbConnection.getInstance().insertOrUpdate(username, ip);
 //						DbConnection.getInstance().insertSubscriberTopic(
 //								DbConnection.getInstance().insertOrUpdate();
 
