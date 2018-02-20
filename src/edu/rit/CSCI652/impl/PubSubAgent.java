@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 public class PubSubAgent {
 
-//    public static final String SERVER_IP = "172.17.0.2";
-    public static final String SERVER_IP = "localhost";
+    public static final String SERVER_IP = "172.17.0.2";
+//    public static final String SERVER_IP = "localhost";
     public static final int SEND_PORT = 6789;
     public static final int RECEIVE_PORT = 6790;
 
