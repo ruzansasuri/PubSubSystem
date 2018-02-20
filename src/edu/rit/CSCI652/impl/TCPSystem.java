@@ -64,11 +64,11 @@ public class TCPSystem
                             Thread thread = new Thread()
                             {
                                 @Override
-                                public void run()
-                                {
-
+                                public void run() {
+                                    handleMessage();
+                                }
+                                public synchronized void handleMessage() {
                                     String recieverIp = receiverSocket.getInetAddress().getHostAddress();
-
 
                                     try
                                     {
