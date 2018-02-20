@@ -17,13 +17,14 @@ import java.util.Scanner;
 public class PubSubAgent {
 
     public static final String SERVER_IP = "172.17.0.2";
-//    public static final String SERVER_IP = "localhost";
+    //    public static final String SERVER_IP = "localhost";
     public static final int SEND_PORT = 6789;
     public static final int RECEIVE_PORT = 6790;
 
     public static void authenticate(TCPSystem tcpSystem, String username) {
         Message message = new Message();
         message.setType(Message.USER_AUTHENTICATION);
+        message.setUsername(username);
 
         try {
             tcpSystem.sendMessage(message, SERVER_IP);
@@ -47,8 +48,18 @@ public class PubSubAgent {
                 switch (message.getType()) {
 
 
+                    case Message.NOTIFICATION_TOPIC:
+
+
+                        Topic topic = message.getTopic();
+                        System.out.println("Topic " + topic.getName() + " has been added");
+                       // pubSubMenu.printMenu();
+
+                        break;
+
+
                     case Message.NOTIFICATION_EVENT:
-                        //TODO RUZAN
+
                         ArrayList<Event> eventList1 = message.getEventList();
                         System.out.println();
                         if (eventList1.size() == 0) {
@@ -326,6 +337,7 @@ public class PubSubAgent {
         authenticate(tcpSystem, username);
 
         pubSubMenu.startAgent();
+        //pubSubMenu.showMenu();
     }
 
 

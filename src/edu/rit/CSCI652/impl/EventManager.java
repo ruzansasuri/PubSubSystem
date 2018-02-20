@@ -3,11 +3,10 @@ package edu.rit.CSCI652.impl;
 
 import edu.rit.CSCI652.demo.Event;
 import edu.rit.CSCI652.demo.Message;
+import edu.rit.CSCI652.demo.Subscriber;
 import edu.rit.CSCI652.demo.Topic;
-import org.sqlite.core.DB;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EventManager{
@@ -40,12 +39,11 @@ public class EventManager{
 					case Message.USER_AUTHENTICATION:
 
 						String username = recvdMessage.getUsername();
-						//come back
-						DbConnection.getInstance().insertOrUpdate(username, ip);
-//						DbConnection.getInstance().insertSubscriberTopic(
-//								DbConnection.getInstance().insertOrUpdate();
 
-//						System.out.println(ip + " subscribe:selected " + topic.getName());
+						DbConnection.getInstance().insertOrUpdate(username, ip);
+
+						DbConnection.getInstance().printSub();
+						DbConnection.getInstance().printEvent();
 
 						break;
 
@@ -73,14 +71,9 @@ public class EventManager{
 						Event event = recvdMessage.getEvent();
 
 						conn.insertEvent(event.getTopicId(), event.getTitle(), event.getContent());
-						/*
-						ArrayList<Event> events = conn.getAllEvents();
 
-						for(Event ev:events)
-							System.out.println(ev);
-						*/
 
-						updateAllSubscribers(event.getTopicId(), tcpSystem);
+						updateAllSubscribersEvent(event.getTopicId(), tcpSystem);
 
 						System.out.println(ip + " publish:send event");
 
@@ -200,19 +193,7 @@ public class EventManager{
 					case Message.ADVERTISE_REQUEST_TOPICS:
 
 						DbConnection.getInstance().insertTopic(recvdMessage.getTopic().getName(), recvdMessage.getTopic().getKeywords());
-						sendMessage = new Message();
-						sendMessage.setType(Message.ADVERTISE_REQUEST_TOPICS);
-						try 
-						{
-
-							tcpSystem.sendMessage(sendMessage, ip);
-
-						} 
-						catch (IOException e) {
-							e.printStackTrace();
-						}
-
-						System.out.println(ip + " advertise: requested topic");
+						updateAllSubscribersTopic(tcpSystem, recvdMessage.getTopic());
 						break;
 				}
 			}
@@ -237,12 +218,40 @@ public class EventManager{
 		tcpSystem.startMessageServer();
 	}
 
-	//TODO CHECK RUZAN
-	public void updateAllSubscribers(int topicId, TCPSystem tcpSystem){
+
+	private void updateAllSubscribersTopic(TCPSystem tcpSystem, Topic topic){
+
+		ArrayList<Subscriber> subscribers = DbConnection.getInstance().getAllSubscribers();
+		for(Subscriber subscriber:subscribers){
+
+			Message sendMessage = new Message();
+			sendMessage.setType(Message.NOTIFICATION_TOPIC);
+			sendMessage.setTopic(topic);
+
+			try {
+				tcpSystem.sendMessage(sendMessage ,subscriber.getIp());
+
+			} catch (IOException e) {
+				System.out.println("Subscriber offline:" + subscriber.getUserName());
+			}
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+
+	private void updateAllSubscribersEvent(int topicId, TCPSystem tcpSystem){
 
 		ArrayList<Integer> subscriberId = DbConnection.getInstance().getAllSubscribersForTopic(topicId);
 		for(Integer id:subscriberId){
 			String ipAddress = DbConnection.getInstance().getIpAddressOfSubscriber(id);
+			Logging.print(" Sending event to sub:" + ipAddress);
 			ArrayList<Event> eventsList = DbConnection.getInstance().getAllEventsForSubscriber(ipAddress);
 
 			Message sendMessage = new Message();
@@ -255,6 +264,12 @@ public class EventManager{
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("Subscriber offline:" + ipAddress);
+			}
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 
 		}

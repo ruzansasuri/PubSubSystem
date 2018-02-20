@@ -57,6 +57,20 @@ public class PubSubMenu {
 
     }
 
+    public void printMenu(){
+
+        System.out.println("\n***** PubSub Menu *****");
+
+        System.out.println("1. Publish");
+        System.out.println("2. Advertise");
+        System.out.println("3. Subscribe");
+        System.out.println("4. Read from topics");
+        System.out.println("5. Read from keywords");
+        System.out.println("6. Unsubscribe");
+        System.out.println("0. Exit\n");
+        System.out.print("Choose menu option : ");
+    }
+
 
     public void setPubSubMenuInterface(PubSubMenuInterface pubSubMenuInterface) {
         this.pubSubMenuInterface = pubSubMenuInterface;
@@ -69,20 +83,10 @@ public class PubSubMenu {
     public void showMenu() {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("\n***** PubSub Menu *****");
-
-        System.out.println("1. Publish");
-        System.out.println("2. Advertise");
-        System.out.println("3. Subscribe");
-        System.out.println("4. Read from topics");
-        System.out.println("5. Read from keywords");
-        System.out.println("6. Unsubscribe");
-        System.out.println("0. Exit\n");
+        printMenu();
 
         boolean exit = false;
         int option = 0;
-
-        System.out.print("Choose menu option : ");
         try {
             option = in.nextInt();
 

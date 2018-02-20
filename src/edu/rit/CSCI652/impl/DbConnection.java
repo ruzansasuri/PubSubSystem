@@ -88,7 +88,7 @@ public class DbConnection {
 
     public void insertEvent(int topicId, String title, String content)
     {
-        int time = getTime();;
+        long time = getTime();;
         String insertTopicSql = "INSERT INTO event(topic_id, title, content, publishdatetime)\n" +
                 "VALUES(\"" + topicId + "\", \"" + title + "\", \"" + content + "\", " + time + ");";
 
@@ -128,6 +128,31 @@ public class DbConnection {
 
 
         return eventList;
+    }
+
+
+    public ArrayList<Subscriber> getAllSubscribers(){
+
+
+        String sql = "SELECT * FROM subscriber";
+
+        ArrayList<Subscriber> subscriberList = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while(rs.next()){
+                String ip = rs.getString("ipaddress");
+                String userName =rs.getString("username");
+                subscriberList.add(new Subscriber(ip, userName));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return subscriberList;
     }
 
     public String getIpAddressOfSubscriber(int subId){
@@ -235,7 +260,7 @@ public class DbConnection {
             Logging.print("Subscriber not logged in to a topic");
             return eventList;
         }
-        
+
         for (Topic t : subTopics) {
            topicIds += t.getId() + ",";
             Logging.print("subscriber has subcribed to topic with id:" + t.getId());
@@ -488,6 +513,44 @@ public class DbConnection {
         }
     }
 
+    public void printSub() {
+        String sql = "SELECT * FROM subscriber";
+
+        System.out.println("Printing subscriber List:");
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while(rs.next()){
+                System.out.println(rs.getInt("id") + ": " +  rs.getString("ipaddress") + ": " + rs.getString("username") + ": " + rs.getString("lastactivedatetime"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void printEvent() {
+        String sql = "SELECT * FROM event";
+
+        System.out.println("Printing event List:");
+        try (Connection conn = DriverManager.getConnection(databasePath);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // loop through the result set
+            while(rs.next()){
+                System.out.println(rs.getInt("topicId") + ": " +  rs.getString("title") + ": " + rs.getString("content")+ ": " + rs.getInt("publishdatetime"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
+
     public void updateSubscriber(String username, String ipaddress) {
         String updateSubscriberSql = "UPDATE subscriber\n"+
                 "SET ipaddress ='"+ ipaddress +"' WHERE username ='" + username + "'";
@@ -519,7 +582,7 @@ public class DbConnection {
     }
 
     public void updateSubscriberLastActive(String ipaddress) {
-        int time = getTime();
+        long time = getTime();
         String updateSubscriberSql = "UPDATE subscriber\n"+
                 "SET lastactivedatetime ='"+time+"' WHERE ipaddress ='" +ipaddress+ "'";
 
@@ -563,8 +626,8 @@ public class DbConnection {
         }
     }
 
-    public int getTime(){
-        return (int)System.currentTimeMillis()/1000;
+    public long getTime(){
+        return System.currentTimeMillis()/1000L;
     }
 
 
