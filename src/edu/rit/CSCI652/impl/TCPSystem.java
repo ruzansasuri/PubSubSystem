@@ -112,11 +112,10 @@ public class TCPSystem
         close = true;
     }
 
-    public void sendToClient(String line, String ipAddress, int port)
+    public void sendToClient(String line, String ipAddress, int port) throws IOException
     {
 
-        try
-        {
+
             InetAddress inetAddress = Inet4Address.getByName(ipAddress);
             System.out.println("Sending to:" + ipAddress);
             Socket receiverSocket = new Socket(inetAddress, port);
@@ -124,10 +123,7 @@ public class TCPSystem
             dataOutputStream.writeBytes(line);
             receiverSocket.close();
 
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+
     }
 
 

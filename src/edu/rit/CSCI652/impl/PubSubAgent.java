@@ -172,12 +172,13 @@ public class PubSubAgent {
                         if (eventList.size() == 0) {
                             System.out.println("There are no events to display");
                         } else {
-
+                            System.out.println("***** Events received for subscribed topics *****");
                             for (Event event : message.getEventList()) {
                                 System.out.println("Title: " + event.getTitle());
                                 System.out.println("Content: " + event.getContent());
                                 System.out.println();
                             }
+                            System.out.println("***** Events end *****\n");
                         }
                         pubSubMenu.showMenu();
 
