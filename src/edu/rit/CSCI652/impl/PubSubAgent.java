@@ -34,7 +34,7 @@ public class PubSubAgent {
     }
 
     public static void main(String[] args) {
-        int clientPort = 9999; //DEFAULT PORT
+
 
         PubSubMenu pubSubMenu = new PubSubMenu();
 
@@ -56,7 +56,7 @@ public class PubSubAgent {
                         System.out.println("Topic " + topic.getName() + " has been added");
                         System.out.println("***** Topics end *****\n");
 
-
+                        System.out.println("Choose option:");
                         //pubSubMenu.showMenu();
 
                         break;
@@ -77,8 +77,9 @@ public class PubSubAgent {
                             }
                             System.out.println("***** Events end *****\n");
                         }
-                        System.out.print("Choose menu option : ");
-                        //pubSubMenu.showMenu();
+
+                        System.out.print("Choose menu option: ");
+
 
                         break;
 
@@ -349,8 +350,6 @@ public class PubSubAgent {
         String username = in.nextLine();
         authenticate(tcpSystem, username);
 
-        //pubSubMenu.startAgent();
-        //pubSubMenu.showMenu();
     }
 
 
