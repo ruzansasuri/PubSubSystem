@@ -55,6 +55,8 @@ public class PubSubAgent {
                         System.out.println("***** Topics notification *****");
                         System.out.println("Topic " + topic.getName() + " has been added");
                         System.out.println("***** Topics end *****\n");
+
+
                         //pubSubMenu.showMenu();
 
                         break;
@@ -200,7 +202,7 @@ public class PubSubAgent {
 
                     case Message.ADVERTISE_REQUEST_TOPICS:
                         System.out.println("Topics have been advertised");
-                        pubSubMenu.showMenu();
+
                         break;
 
                     case Message.USER_AUTHENTICATION:
@@ -269,6 +271,8 @@ public class PubSubAgent {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                pubSubMenu.showMenu();
 
             }
 
