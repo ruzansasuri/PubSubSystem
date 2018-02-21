@@ -44,6 +44,15 @@ public class EventManager{
 
 						DbConnection.getInstance().printSub();
 						DbConnection.getInstance().printEvent();
+						sendMessage = new Message();
+						sendMessage.setType(Message.USER_AUTHENTICATION);
+						try {
+
+							tcpSystem.sendMessage(sendMessage, ip);
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 
 						break;
 
@@ -261,7 +270,7 @@ public class EventManager{
 				tcpSystem.sendMessage(sendMessage ,ipAddress);
 				DbConnection.getInstance().updateSubscriberLastActive(ipAddress);
 
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("Subscriber offline:" + ipAddress);
 			}

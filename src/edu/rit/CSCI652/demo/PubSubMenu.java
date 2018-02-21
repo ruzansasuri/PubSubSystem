@@ -64,9 +64,7 @@ public class PubSubMenu {
         System.out.println("1. Publish");
         System.out.println("2. Advertise");
         System.out.println("3. Subscribe");
-        System.out.println("4. Read from topics");
-        System.out.println("5. Read from keywords");
-        System.out.println("6. Unsubscribe");
+        System.out.println("4. Unsubscribe");
         System.out.println("0. Exit\n");
         System.out.print("Choose menu option : ");
     }
@@ -109,19 +107,12 @@ public class PubSubMenu {
                 pubSubMenuInterface.invokeSubscribe();
                 return;
             case 4:
-                System.out.println("**** Starting read from topics ****\n");
-                pubSubMenuInterface.invokeRead();
-                return;
-            case 5:
-                System.out.println("**** Starting read from keywords ****\n");
-                pubSubMenuInterface.invokeReadFromKeyword();
-                return;
-            case 6:
                 System.out.println("**** Starting unsubscribe ****\n");
                 pubSubMenuInterface.invokeUnsubscribe();
                 return;
             case 0:
                 exit = true;
+                System.out.println("**** Exiting PubSub Menu ****\n");
                 return;
             default:
                 System.out.println("Invalid choice \n");

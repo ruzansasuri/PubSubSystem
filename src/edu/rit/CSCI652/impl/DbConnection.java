@@ -540,7 +540,7 @@ public class DbConnection {
              ResultSet rs = stmt.executeQuery(sql)) {
             // loop through the result set
             while(rs.next()){
-                System.out.println(rs.getInt("topicId") + ": " +  rs.getString("title") + ": " + rs.getString("content")+ ": " + rs.getInt("publishdatetime"));
+                System.out.println(rs.getInt("topic_id") + ": " +  rs.getString("title") + ": " + rs.getString("content")+ ": " + rs.getInt("publishdatetime"));
             }
 
         } catch (SQLException e) {

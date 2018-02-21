@@ -52,8 +52,10 @@ public class PubSubAgent {
 
 
                         Topic topic = message.getTopic();
+                        System.out.println("***** Topics notification *****");
                         System.out.println("Topic " + topic.getName() + " has been added");
-                       // pubSubMenu.printMenu();
+                        System.out.println("***** Topics end *****\n");
+                        //pubSubMenu.showMenu();
 
                         break;
 
@@ -65,13 +67,15 @@ public class PubSubAgent {
                         if (eventList1.size() == 0) {
                             System.out.println("There are no events to display");
                         } else {
-
+                            System.out.println("***** Events received for subscribed topics *****");
                             for (Event event : eventList1) {
                                 System.out.println("Title: " + event.getTitle());
                                 System.out.println("Content: " + event.getContent());
                                 System.out.println();
                             }
+                            System.out.println("***** Events end *****\n");
                         }
+                        System.out.print("Choose menu option : ");
                         //pubSubMenu.showMenu();
 
                         break;
@@ -197,6 +201,11 @@ public class PubSubAgent {
                     case Message.ADVERTISE_REQUEST_TOPICS:
                         System.out.println("Topics have been advertised");
                         pubSubMenu.showMenu();
+                        break;
+
+                    case Message.USER_AUTHENTICATION:
+                        System.out.println("Authentication done. Showing menu");
+                        pubSubMenu.startAgent();
                         break;
                 }
 
@@ -336,7 +345,7 @@ public class PubSubAgent {
         String username = in.nextLine();
         authenticate(tcpSystem, username);
 
-        pubSubMenu.startAgent();
+        //pubSubMenu.startAgent();
         //pubSubMenu.showMenu();
     }
 
