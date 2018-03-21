@@ -3612,3 +3612,65 @@ Removing intermediate container 4beb444d0253
  ---> 2f68dbb0662e
 Successfully built 2f68dbb0662e
 Successfully tagged pubsub_sub:latest
+mkdir: cannot create directory ‘out’: File exists
+Compiled..
+"docker stop" requires at least 1 argument.
+See 'docker stop --help'.
+
+Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...] [flags]
+
+Stop one or more running containers
+Total reclaimed space: 0B
+Untagged: pubsub:latest
+Deleted: sha256:9ea1d38c31918b47ad97e1d3481bb2908cc5ebeaf62ae9fee5f36a9fa904dff7
+Deleted: sha256:033520f6821f02d23607296df9a7331d3972f72181a408b835e84e63226b7744
+Deleted: sha256:73a115131c92759d17423db4ba8995bbff1d0b917dd390d8e4fcf156d216fec1
+Deleted: sha256:fc355276377e7491114bc4ecd102bb04cf435116ac18219535425e0c11702bf9
+Sending build context to Docker daemon  15.06MB
+Step 1/5 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/5 : CMD mkdir project
+ ---> Using cache
+ ---> f31cd154c582
+Step 3/5 : COPY . project
+ ---> 09cde8a5734f
+Step 4/5 : WORKDIR /project
+Removing intermediate container 25bcf7838044
+ ---> b231be983de3
+Step 5/5 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar:database/pubsub.db" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in e0e69e77ccae
+Removing intermediate container e0e69e77ccae
+ ---> f90b0e27ccf6
+Successfully built f90b0e27ccf6
+Successfully tagged pubsub:latest
+mkdir: cannot create directory ‘out’: File exists
+Compiled..
+"docker stop" requires at least 1 argument.
+See 'docker stop --help'.
+
+Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...] [flags]
+
+Stop one or more running containers
+Total reclaimed space: 0B
+Untagged: pubsub:latest
+Deleted: sha256:f90b0e27ccf6e830dbe64aa1077b64246ca23aafd39be5ade2ae3b00f2f3633c
+Deleted: sha256:b231be983de38417a2bc9c1cb3b133e16879912900d5b8648f8c383824f15130
+Deleted: sha256:09cde8a5734f5d3e22a8a8f300835ea6f9f094e8098557ea62c4af47bb421ecb
+Deleted: sha256:f1ab90cef4cc45c3ccb932b76e1e7bf93c1ebe8db9681683b47f14938a5c271d
+Sending build context to Docker daemon  15.06MB
+Step 1/5 : FROM openjdk
+ ---> 7c57090325cc
+Step 2/5 : CMD mkdir project
+ ---> Using cache
+ ---> f31cd154c582
+Step 3/5 : COPY . project
+ ---> 419b0ed79d7f
+Step 4/5 : WORKDIR /project
+Removing intermediate container f69217c39140
+ ---> 2730ad38ffaf
+Step 5/5 : CMD java -cp "out:lib/gson-2.6.2.jar:lib/sqlite-jdbc-3.21.0.jar:database/pubsub.db" edu.rit.CSCI652.impl.$SYSTEM_TYPE
+ ---> Running in 36101431fe95
+Removing intermediate container 36101431fe95
+ ---> 1ee94e6ed6c2
+Successfully built 1ee94e6ed6c2
+Successfully tagged pubsub:latest

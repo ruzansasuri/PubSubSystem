@@ -9,13 +9,10 @@ echo Creating images..This may take a few seconds..
 if [ $? -eq 0 ]
 then
 	echo Created images!
-	wait 100
+	sleep 1
 	echo Starting Docker..
-	echo Building network..
-	echo Starting DB..
-	echo Taking a coffee break..
-	echo Ready!
 	./run.sh >> $LOGFILE 2>&1
+	echo Ready!
 else
 	echo Image Creation Failed
 fi
